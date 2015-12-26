@@ -87,6 +87,8 @@ function IsCommandNotHelpful {
 
 function Get-GitCommand
 {
+    Param([string]$Name = "*")
+    
     git help -a 2>&1 | 
         ForEach-Object {
             if($_ -match "^  (?<first>$commandName)\s+(?<second>$commandName)(?:\s+(?<third>$commandName))?\s*$")
@@ -95,6 +97,9 @@ function Get-GitCommand
                 $Matches["second"]
                 $Matches["third"] | ? { $_ }
             } 
+        } |
+        Where-Object {
+            $_ -like $Name
         } |
         ForEach-Object {
             if(!(IsCommandNotHelpful $_))
