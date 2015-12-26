@@ -38,6 +38,8 @@ $sub_commands = & {
             parameters = $parameters
         }
     }
+} | Where-Object {
+    $_
 }
 
 if(-not $preGeneration.sub_commands)

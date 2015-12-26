@@ -1,7 +1,6 @@
 ﻿{
     "command":  "git",
     "sub_commands":  [
-                         null,
                          {
                              "command":  "add",
                              "parameters":  [
