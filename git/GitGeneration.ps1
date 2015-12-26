@@ -58,9 +58,11 @@ $sub_commands = & {
         
         $obj
     }
-} | Where-Object {
+} | 
+Where-Object {
     $_
-}
+} |
+Sort-Object -Property command
 
 if(-not $preGeneration.sub_commands)
 {
