@@ -1,4 +1,5 @@
 
+$commandName = "(?:[\w-\.]+)"
 $shortParameterCapture = "(?<short>-\w)"
 $longParameterCapture = "(?<long>--[\w-]+)"
 $parameterCapture = "(?:(?:$shortParameterCapture(?:, $longParameterCapture)?)|$longParameterCapture)"
@@ -17,7 +18,7 @@ class GitCommandParameter {
     [string]$Description
 }
 
-function Read-GitCommandParameters 
+function Read-GitCommandParameter 
 {
     begin {
         $getDescription = $false
@@ -28,7 +29,7 @@ function Read-GitCommandParameters
         {
             $getDescription = !$Matches["description"]
             
-            $lastSeen = [GitCommandParameter]@{
+            $lastSeen = New-Object GitCommandParameter -Property @{
                 ShortParameter=$Matches["short"]
                 LongParameter=$Matches["long"]
                 ArgumentName=$Matches["argument"]
@@ -63,16 +64,49 @@ function Read-GitCommandParameters
     
 }
 
-function Get-GitCommandParameters
+function Get-GitCommandParameter
 {
     Param([string]$CommandName)
     
-    git $CommandName -h 2>&1 | Read-GitCommandParameters
+    git $CommandName -h 2>&1 | Read-GitCommandParameter
 }
 
-function GetGitHelpParameters
+class GitCommand
 {
-    git 
+    [string]$Name
+    [GitCommandParameter[]]$Parameters
+}
+
+$nonHelpfulCommands = @("gui*", "citool", "remote-*", "sh-i18n--envsubst", "credential*")
+
+function IsCommandNotHelpful {
+    Param([string]$command)
+    
+    return !!($nonHelpfulCommands | Where-Object { $command -like $_ })
+}
+
+function Get-GitCommand
+{
+    git help -a 2>&1 | 
+        ForEach-Object {
+            if($_ -match "^  (?<first>$commandName)\s+(?<second>$commandName)(?:\s+(?<third>$commandName))?\s*$")
+            {
+                $Matches["first"]
+                $Matches["second"]
+                $Matches["third"] | ? { $_ }
+            } 
+        } |
+        ForEach-Object {
+            if(!(IsCommandNotHelpful $_))
+            {
+                $parameters = [GitCommandParameter[]](Get-GitCommandParameter $_)
+            }
+            
+            [GitCommand]@{
+                Name = $_
+                Parameters = $parameters
+            }
+        }
 }
 
 function CompleteGitCompletionOptions

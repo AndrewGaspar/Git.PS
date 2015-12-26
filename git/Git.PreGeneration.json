@@ -1,11 +1,3 @@
 {
-    "command": "git",
-    "parameters": {
-        
-    },
-    "sub_commands": [
-        {
-            "command": "branch"
-        }
-    ]
+    "command": "git"
 }

@@ -1,47 +1,50 @@
-# [CmdletBinding()]
-# Param([string]$preGenerationLocation, [string]$completionLocation)
+Param([string]$preGenerationLocation, [string]$completionLocation)
 
-function ParseGitHelpParameters 
-{
-    begin {
-        $getDescription = $false
-    }
-    
-    process {
-        $_
-    }
-    
-    end {
-        
-    }
-}
+$scriptPath = Split-Path $PSCommandPath
 
-function GetGitCommandParameters
-{
-    Param([string]$commandName)
+Import-Module "$scriptPath\mod\Git.Reflection.psm1"
+
+$preGeneration = Get-Content $preGenerationLocation | ConvertFrom-Json
+
+$sub_commands = & {
+    $preGeneration.sub_commands
     
-    $argumentCapture = "\<(?<argument>\w+)\>"
-    
-    git $commandName -h | ForEach-Object {
-        if($_ -match "^    (?<short>-\w)( ,(?<long>--\w+))?(( $argumentCapture)|(?<optional_arg>[=$argumentCapture]))?\w+$")
-        {
+    Get-GitCommand | ForEach-Object {
+        $parameters = $_.Parameters | ForEach-Object {
+            if($_.LongParameter)
+            {
+                $parameter = $_.LongParameter
+            }
+            else
+            {
+                $parameter = $_.ShortParameter
+            }
             
+            $obj = New-Object PSCustomObject -Property @{
+                name = $parameter
+                tooltip = $_.Description
+            }
+            
+            if($_.LongParameter -and $_.ShortParameter)
+            {
+                Add-Member -InputObject $obj -NotePropertyName alias -NotePropertyValue $_.ShortParameter
+            }
+            
+            $obj
+        }
+        
+        New-Object PSCustomObject -Property @{
+            command = $_.Name
+            parameters = $parameters
         }
     }
 }
 
-function GetGitHelpParameters
+if(-not $preGeneration.sub_commands)
 {
-    git 
+    Add-Member -InputObject $preGeneration -NotePropertyName "sub_commands" -NotePropertyValue @()
 }
 
-function CompleteGitCompletionOptions
-{
-    Param([PSObject]$completionOptions)
-    
-    
-}
+$preGeneration.sub_commands = $sub_commands
 
-$preGeneration = Get-Content $preGenerationLocation | ConvertFrom-Json
-
-$preGeneration | ConvertTo-Json > "Git.Completion.json"
+$preGeneration | ConvertTo-Json -Depth 10 > "Git.Completion.json"
