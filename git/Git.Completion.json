@@ -163,7 +163,8 @@
                                                 },
                                                 {
                                                     "name":  "--whitespace",
-                                                    "tooltip":  "pass it through git-apply"
+                                                    "tooltip":  "pass it through git-apply",
+                                                    "argument_type":  "action"
                                                 },
                                                 {
                                                     "name":  "--ignore-space-change",
@@ -175,27 +176,33 @@
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "pass it through git-apply"
+                                                    "tooltip":  "pass it through git-apply",
+                                                    "argument_type":  "root"
                                                 },
                                                 {
                                                     "name":  "--exclude",
-                                                    "tooltip":  "pass it through git-apply"
+                                                    "tooltip":  "pass it through git-apply",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--include",
-                                                    "tooltip":  "pass it through git-apply"
+                                                    "tooltip":  "pass it through git-apply",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "-C",
-                                                    "tooltip":  "pass it through git-apply"
+                                                    "tooltip":  "pass it through git-apply",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "-p",
-                                                    "tooltip":  "pass it through git-apply"
+                                                    "tooltip":  "pass it through git-apply",
+                                                    "argument_type":  "num"
                                                 },
                                                 {
                                                     "name":  "--patch-format",
-                                                    "tooltip":  "format the patch(es) are in"
+                                                    "tooltip":  "format the patch(es) are in",
+                                                    "argument_type":  "format"
                                                 },
                                                 {
                                                     "name":  "--reject",
@@ -237,7 +244,9 @@
                                                 {
                                                     "name":  "--gpg-sign",
                                                     "tooltip":  "GPG-sign commits",
-                                                    "alias":  "-S"
+                                                    "alias":  "-S",
+                                                    "argument_type":  "key-id",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -328,11 +337,13 @@
                                                 },
                                                 {
                                                     "name":  "-S",
-                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list"
+                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--contents",
-                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image"
+                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -340,11 +351,15 @@
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -421,11 +436,13 @@
                                                 },
                                                 {
                                                     "name":  "-S",
-                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list"
+                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--contents",
-                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image"
+                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -433,11 +450,15 @@
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -461,15 +482,18 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--exclude",
-                                                    "tooltip":  "don\u0027t apply changes matching the given path"
+                                                    "tooltip":  "don\u0027t apply changes matching the given path",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--include",
-                                                    "tooltip":  "apply changes matching the given path"
+                                                    "tooltip":  "apply changes matching the given path",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "-p",
-                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths"
+                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths",
+                                                    "argument_type":  "num"
                                                 },
                                                 {
                                                     "name":  "--no-add",
@@ -514,7 +538,8 @@
                                                 },
                                                 {
                                                     "name":  "--build-fake-ancestor",
-                                                    "tooltip":  "build a temporary index based on embedded index information"
+                                                    "tooltip":  "build a temporary index based on embedded index information",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "-z",
@@ -522,11 +547,13 @@
                                                 },
                                                 {
                                                     "name":  "-C",
-                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match"
+                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--whitespace",
-                                                    "tooltip":  "detect new or modified lines that have whitespace errors"
+                                                    "tooltip":  "detect new or modified lines that have whitespace errors",
+                                                    "argument_type":  "action"
                                                 },
                                                 {
                                                     "name":  "--ignore-space-change",
@@ -568,11 +595,13 @@
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames"
+                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
+                                                    "argument_type":  "root"
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames"
+                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
+                                                    "argument_type":  "root"
                                                 }
                                             ]
                          },
@@ -581,15 +610,18 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--exclude",
-                                                    "tooltip":  "don\u0027t apply changes matching the given path"
+                                                    "tooltip":  "don\u0027t apply changes matching the given path",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--include",
-                                                    "tooltip":  "apply changes matching the given path"
+                                                    "tooltip":  "apply changes matching the given path",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "-p",
-                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths"
+                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths",
+                                                    "argument_type":  "num"
                                                 },
                                                 {
                                                     "name":  "--no-add",
@@ -634,7 +666,8 @@
                                                 },
                                                 {
                                                     "name":  "--build-fake-ancestor",
-                                                    "tooltip":  "build a temporary index based on embedded index information"
+                                                    "tooltip":  "build a temporary index based on embedded index information",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "-z",
@@ -642,11 +675,13 @@
                                                 },
                                                 {
                                                     "name":  "-C",
-                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match"
+                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--whitespace",
-                                                    "tooltip":  "detect new or modified lines that have whitespace errors"
+                                                    "tooltip":  "detect new or modified lines that have whitespace errors",
+                                                    "argument_type":  "action"
                                                 },
                                                 {
                                                     "name":  "--ignore-space-change",
@@ -688,11 +723,13 @@
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames"
+                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
+                                                    "argument_type":  "root"
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames"
+                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
+                                                    "argument_type":  "root"
                                                 }
                                             ]
                          },
@@ -701,15 +738,18 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--exclude",
-                                                    "tooltip":  "don\u0027t apply changes matching the given path"
+                                                    "tooltip":  "don\u0027t apply changes matching the given path",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--include",
-                                                    "tooltip":  "apply changes matching the given path"
+                                                    "tooltip":  "apply changes matching the given path",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "-p",
-                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths"
+                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths",
+                                                    "argument_type":  "num"
                                                 },
                                                 {
                                                     "name":  "--no-add",
@@ -754,7 +794,8 @@
                                                 },
                                                 {
                                                     "name":  "--build-fake-ancestor",
-                                                    "tooltip":  "build a temporary index based on embedded index information"
+                                                    "tooltip":  "build a temporary index based on embedded index information",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "-z",
@@ -762,11 +803,13 @@
                                                 },
                                                 {
                                                     "name":  "-C",
-                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match"
+                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--whitespace",
-                                                    "tooltip":  "detect new or modified lines that have whitespace errors"
+                                                    "tooltip":  "detect new or modified lines that have whitespace errors",
+                                                    "argument_type":  "action"
                                                 },
                                                 {
                                                     "name":  "--ignore-space-change",
@@ -808,11 +851,13 @@
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames"
+                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
+                                                    "argument_type":  "root"
                                                 },
                                                 {
                                                     "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames"
+                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
+                                                    "argument_type":  "root"
                                                 }
                                             ]
                          },
@@ -842,16 +887,19 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--format",
-                                                    "tooltip":  "archive format"
+                                                    "tooltip":  "archive format",
+                                                    "argument_type":  "fmt"
                                                 },
                                                 {
                                                     "name":  "--prefix",
-                                                    "tooltip":  "prepend prefix to each pathname in the archive"
+                                                    "tooltip":  "prepend prefix to each pathname in the archive",
+                                                    "argument_type":  "prefix"
                                                 },
                                                 {
                                                     "name":  "--output",
                                                     "tooltip":  "write the archive to this file",
-                                                    "alias":  "-o"
+                                                    "alias":  "-o",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--worktree-attributes",
@@ -881,15 +929,18 @@
                                                 },
                                                 {
                                                     "name":  "--remote",
-                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e"
+                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e",
+                                                    "argument_type":  "repo"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command"
+                                                    "tooltip":  "path to the remote git-upload-archive command",
+                                                    "argument_type":  "command"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command"
+                                                    "tooltip":  "path to the remote git-upload-archive command",
+                                                    "argument_type":  "command"
                                                 }
                                             ]
                          },
@@ -898,16 +949,19 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--format",
-                                                    "tooltip":  "archive format"
+                                                    "tooltip":  "archive format",
+                                                    "argument_type":  "fmt"
                                                 },
                                                 {
                                                     "name":  "--prefix",
-                                                    "tooltip":  "prepend prefix to each pathname in the archive"
+                                                    "tooltip":  "prepend prefix to each pathname in the archive",
+                                                    "argument_type":  "prefix"
                                                 },
                                                 {
                                                     "name":  "--output",
                                                     "tooltip":  "write the archive to this file",
-                                                    "alias":  "-o"
+                                                    "alias":  "-o",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--worktree-attributes",
@@ -937,15 +991,18 @@
                                                 },
                                                 {
                                                     "name":  "--remote",
-                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e"
+                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e",
+                                                    "argument_type":  "repo"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command"
+                                                    "tooltip":  "path to the remote git-upload-archive command",
+                                                    "argument_type":  "command"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command"
+                                                    "tooltip":  "path to the remote git-upload-archive command",
+                                                    "argument_type":  "command"
                                                 }
                                             ]
                          },
@@ -954,16 +1011,19 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--format",
-                                                    "tooltip":  "archive format"
+                                                    "tooltip":  "archive format",
+                                                    "argument_type":  "fmt"
                                                 },
                                                 {
                                                     "name":  "--prefix",
-                                                    "tooltip":  "prepend prefix to each pathname in the archive"
+                                                    "tooltip":  "prepend prefix to each pathname in the archive",
+                                                    "argument_type":  "prefix"
                                                 },
                                                 {
                                                     "name":  "--output",
                                                     "tooltip":  "write the archive to this file",
-                                                    "alias":  "-o"
+                                                    "alias":  "-o",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--worktree-attributes",
@@ -993,15 +1053,18 @@
                                                 },
                                                 {
                                                     "name":  "--remote",
-                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e"
+                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e",
+                                                    "argument_type":  "repo"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command"
+                                                    "tooltip":  "path to the remote git-upload-archive command",
+                                                    "argument_type":  "command"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command"
+                                                    "tooltip":  "path to the remote git-upload-archive command",
+                                                    "argument_type":  "command"
                                                 }
                                             ]
                          },
@@ -1017,7 +1080,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "-t",
-                                                    "tooltip":  "object type"
+                                                    "tooltip":  "object type",
+                                                    "argument_type":  "type"
                                                 },
                                                 {
                                                     "name":  "-w",
@@ -1041,11 +1105,13 @@
                                                 },
                                                 {
                                                     "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path"
+                                                    "tooltip":  "process file as it were from this path",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path"
+                                                    "tooltip":  "process file as it were from this path",
+                                                    "argument_type":  "file"
                                                 }
                                             ]
                          },
@@ -1054,7 +1120,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "-t",
-                                                    "tooltip":  "object type"
+                                                    "tooltip":  "object type",
+                                                    "argument_type":  "type"
                                                 },
                                                 {
                                                     "name":  "-w",
@@ -1078,11 +1145,13 @@
                                                 },
                                                 {
                                                     "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path"
+                                                    "tooltip":  "process file as it were from this path",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path"
+                                                    "tooltip":  "process file as it were from this path",
+                                                    "argument_type":  "file"
                                                 }
                                             ]
                          },
@@ -1246,11 +1315,13 @@
                                                 },
                                                 {
                                                     "name":  "-S",
-                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list"
+                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--contents",
-                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image"
+                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -1258,11 +1329,15 @@
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -1338,23 +1413,28 @@
                                                 },
                                                 {
                                                     "name":  "--unpack-unreachable",
-                                                    "tooltip":  "with -A, do not loosen objects older than this"
+                                                    "tooltip":  "with -A, do not loosen objects older than this",
+                                                    "argument_type":  "approxidate"
                                                 },
                                                 {
                                                     "name":  "--window",
-                                                    "tooltip":  "size of the window used for delta compression"
+                                                    "tooltip":  "size of the window used for delta compression",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--window-memory",
-                                                    "tooltip":  "same as the above, but limit memory size instead of entries count"
+                                                    "tooltip":  "same as the above, but limit memory size instead of entries count",
+                                                    "argument_type":  "bytes"
                                                 },
                                                 {
                                                     "name":  "--depth",
-                                                    "tooltip":  "limits the maximum delta depth"
+                                                    "tooltip":  "limits the maximum delta depth",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--max-pack-size",
-                                                    "tooltip":  "maximum size of each packfile"
+                                                    "tooltip":  "maximum size of each packfile",
+                                                    "argument_type":  "bytes"
                                                 },
                                                 {
                                                     "name":  "--pack-kept-objects",
@@ -1414,11 +1494,13 @@
                                                 },
                                                 {
                                                     "name":  "--format",
-                                                    "tooltip":  "use this format"
+                                                    "tooltip":  "use this format",
+                                                    "argument_type":  "format"
                                                 },
                                                 {
                                                     "name":  "--format",
-                                                    "tooltip":  "use this format"
+                                                    "tooltip":  "use this format",
+                                                    "argument_type":  "format"
                                                 }
                                             ]
                          },
@@ -1455,11 +1537,15 @@
                                                 },
                                                 {
                                                     "name":  "--batch",
-                                                    "tooltip":  "show info and content of objects fed from the standard input"
+                                                    "tooltip":  "show info and content of objects fed from the standard input",
+                                                    "argument_type":  "format",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--batch-check",
-                                                    "tooltip":  "show info about objects fed from the standard input"
+                                                    "tooltip":  "show info about objects fed from the standard input",
+                                                    "argument_type":  "format",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--follow-symlinks",
@@ -1598,7 +1684,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--template",
-                                                    "tooltip":  "directory from which templates will be used"
+                                                    "tooltip":  "directory from which templates will be used",
+                                                    "argument_type":  "template-directory"
                                                 },
                                                 {
                                                     "name":  "--bare",
@@ -1606,7 +1693,9 @@
                                                 },
                                                 {
                                                     "name":  "--shared",
-                                                    "tooltip":  "specify that the git repository is to be shared amongst several users"
+                                                    "tooltip":  "specify that the git repository is to be shared amongst several users",
+                                                    "argument_type":  "permissions",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -1615,7 +1704,8 @@
                                                 },
                                                 {
                                                     "name":  "--separate-git-dir",
-                                                    "tooltip":  "separate git dir from working tree"
+                                                    "tooltip":  "separate git dir from working tree",
+                                                    "argument_type":  "gitdir"
                                                 }
                                             ]
                          },
@@ -1682,7 +1772,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--template",
-                                                    "tooltip":  "directory from which templates will be used"
+                                                    "tooltip":  "directory from which templates will be used",
+                                                    "argument_type":  "template-directory"
                                                 },
                                                 {
                                                     "name":  "--bare",
@@ -1690,7 +1781,9 @@
                                                 },
                                                 {
                                                     "name":  "--shared",
-                                                    "tooltip":  "specify that the git repository is to be shared amongst several users"
+                                                    "tooltip":  "specify that the git repository is to be shared amongst several users",
+                                                    "argument_type":  "permissions",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -1699,7 +1792,8 @@
                                                 },
                                                 {
                                                     "name":  "--separate-git-dir",
-                                                    "tooltip":  "separate git dir from working tree"
+                                                    "tooltip":  "separate git dir from working tree",
+                                                    "argument_type":  "gitdir"
                                                 }
                                             ]
                          },
@@ -1780,11 +1874,13 @@
                                                 },
                                                 {
                                                     "name":  "-b",
-                                                    "tooltip":  "create and checkout a new branch"
+                                                    "tooltip":  "create and checkout a new branch",
+                                                    "argument_type":  "branch"
                                                 },
                                                 {
                                                     "name":  "-B",
-                                                    "tooltip":  "create/reset and checkout a branch"
+                                                    "tooltip":  "create/reset and checkout a branch",
+                                                    "argument_type":  "branch"
                                                 },
                                                 {
                                                     "name":  "-l",
@@ -1801,7 +1897,8 @@
                                                 },
                                                 {
                                                     "name":  "--orphan",
-                                                    "tooltip":  "new unparented branch"
+                                                    "tooltip":  "new unparented branch",
+                                                    "argument_type":  "new-branch"
                                                 },
                                                 {
                                                     "name":  "--ours",
@@ -1829,7 +1926,8 @@
                                                 },
                                                 {
                                                     "name":  "--conflict",
-                                                    "tooltip":  "conflict style (merge or diff3)"
+                                                    "tooltip":  "conflict style (merge or diff3)",
+                                                    "argument_type":  "style"
                                                 },
                                                 {
                                                     "name":  "--patch",
@@ -1855,11 +1953,13 @@
                                                 },
                                                 {
                                                     "name":  "--trailer",
-                                                    "tooltip":  "trailer(s) to add"
+                                                    "tooltip":  "trailer(s) to add",
+                                                    "argument_type":  "trailer"
                                                 },
                                                 {
                                                     "name":  "--trailer",
-                                                    "tooltip":  "trailer(s) to add"
+                                                    "tooltip":  "trailer(s) to add",
+                                                    "argument_type":  "trailer"
                                                 }
                                             ]
                          },
@@ -1896,7 +1996,8 @@
                                                 {
                                                     "name":  "--mainline",
                                                     "tooltip":  "parent number",
-                                                    "alias":  "-m"
+                                                    "alias":  "-m",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--rerere-autoupdate",
@@ -1904,17 +2005,21 @@
                                                 },
                                                 {
                                                     "name":  "--strategy",
-                                                    "tooltip":  "merge strategy"
+                                                    "tooltip":  "merge strategy",
+                                                    "argument_type":  "strategy"
                                                 },
                                                 {
                                                     "name":  "--strategy-option",
                                                     "tooltip":  "option for merge strategy",
-                                                    "alias":  "-X"
+                                                    "alias":  "-X",
+                                                    "argument_type":  "option"
                                                 },
                                                 {
                                                     "name":  "--gpg-sign",
                                                     "tooltip":  "GPG sign commit",
-                                                    "alias":  "-S"
+                                                    "alias":  "-S",
+                                                    "argument_type":  "key-id",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -1992,7 +2097,9 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--verbose",
@@ -2163,7 +2270,8 @@
                                                 {
                                                     "name":  "--mainline",
                                                     "tooltip":  "parent number",
-                                                    "alias":  "-m"
+                                                    "alias":  "-m",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--rerere-autoupdate",
@@ -2171,17 +2279,21 @@
                                                 },
                                                 {
                                                     "name":  "--strategy",
-                                                    "tooltip":  "merge strategy"
+                                                    "tooltip":  "merge strategy",
+                                                    "argument_type":  "strategy"
                                                 },
                                                 {
                                                     "name":  "--strategy-option",
                                                     "tooltip":  "option for merge strategy",
-                                                    "alias":  "-X"
+                                                    "alias":  "-X",
+                                                    "argument_type":  "option"
                                                 },
                                                 {
                                                     "name":  "--gpg-sign",
                                                     "tooltip":  "GPG sign commit",
-                                                    "alias":  "-S"
+                                                    "alias":  "-S",
+                                                    "argument_type":  "key-id",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "-x",
@@ -2227,15 +2339,18 @@
                                                 },
                                                 {
                                                     "name":  "--receive-pack",
-                                                    "tooltip":  "receive pack program"
+                                                    "tooltip":  "receive pack program",
+                                                    "argument_type":  "receive-pack"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "receive pack program"
+                                                    "tooltip":  "receive pack program",
+                                                    "argument_type":  "receive-pack"
                                                 },
                                                 {
                                                     "name":  "--remote",
-                                                    "tooltip":  "remote name"
+                                                    "tooltip":  "remote name",
+                                                    "argument_type":  "remote"
                                                 },
                                                 {
                                                     "name":  "--all",
@@ -2300,15 +2415,18 @@
                                                 },
                                                 {
                                                     "name":  "--receive-pack",
-                                                    "tooltip":  "receive pack program"
+                                                    "tooltip":  "receive pack program",
+                                                    "argument_type":  "receive-pack"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "receive pack program"
+                                                    "tooltip":  "receive pack program",
+                                                    "argument_type":  "receive-pack"
                                                 },
                                                 {
                                                     "name":  "--remote",
-                                                    "tooltip":  "remote name"
+                                                    "tooltip":  "remote name",
+                                                    "argument_type":  "remote"
                                                 },
                                                 {
                                                     "name":  "--all",
@@ -2400,11 +2518,15 @@
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -2450,11 +2572,15 @@
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -2488,7 +2614,8 @@
                                                 {
                                                     "name":  "--exclude",
                                                     "tooltip":  "add \u003cpattern\u003e to ignore rules",
-                                                    "alias":  "-e"
+                                                    "alias":  "-e",
+                                                    "argument_type":  "pattern"
                                                 },
                                                 {
                                                     "name":  "-x",
@@ -2590,11 +2717,13 @@
                                                 },
                                                 {
                                                     "name":  "--template",
-                                                    "tooltip":  "directory from which templates will be used"
+                                                    "tooltip":  "directory from which templates will be used",
+                                                    "argument_type":  "template-directory"
                                                 },
                                                 {
                                                     "name":  "--reference",
-                                                    "tooltip":  "reference repository"
+                                                    "tooltip":  "reference repository",
+                                                    "argument_type":  "repo"
                                                 },
                                                 {
                                                     "name":  "--dissociate",
@@ -2603,21 +2732,25 @@
                                                 {
                                                     "name":  "--origin",
                                                     "tooltip":  "use \u003cname\u003e instead of \u0027origin\u0027 to track upstream",
-                                                    "alias":  "-o"
+                                                    "alias":  "-o",
+                                                    "argument_type":  "name"
                                                 },
                                                 {
                                                     "name":  "--branch",
                                                     "tooltip":  "checkout \u003cbranch\u003e instead of the remote\u0027s HEAD",
-                                                    "alias":  "-b"
+                                                    "alias":  "-b",
+                                                    "argument_type":  "branch"
                                                 },
                                                 {
                                                     "name":  "--upload-pack",
                                                     "tooltip":  "path to git-upload-pack on the remote",
-                                                    "alias":  "-u"
+                                                    "alias":  "-u",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--depth",
-                                                    "tooltip":  "create a shallow clone of that depth"
+                                                    "tooltip":  "create a shallow clone of that depth",
+                                                    "argument_type":  "depth"
                                                 },
                                                 {
                                                     "name":  "--single-branch",
@@ -2625,7 +2758,8 @@
                                                 },
                                                 {
                                                     "name":  "--separate-git-dir",
-                                                    "tooltip":  "separate git dir from working tree"
+                                                    "tooltip":  "separate git dir from working tree",
+                                                    "argument_type":  "gitdir"
                                                 },
                                                 {
                                                     "name":  "--config",
@@ -2677,35 +2811,44 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--command",
-                                                    "tooltip":  "lookup config vars"
+                                                    "tooltip":  "lookup config vars",
+                                                    "argument_type":  "name"
                                                 },
                                                 {
                                                     "name":  "--mode",
-                                                    "tooltip":  "layout to use"
+                                                    "tooltip":  "layout to use",
+                                                    "argument_type":  "style",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--raw-mode",
-                                                    "tooltip":  "layout to use"
+                                                    "tooltip":  "layout to use",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--width",
-                                                    "tooltip":  "Maximum width"
+                                                    "tooltip":  "Maximum width",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--indent",
-                                                    "tooltip":  "Padding space on left border"
+                                                    "tooltip":  "Padding space on left border",
+                                                    "argument_type":  "string"
                                                 },
                                                 {
                                                     "name":  "--nl",
-                                                    "tooltip":  "Padding space on right border"
+                                                    "tooltip":  "Padding space on right border",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--padding",
-                                                    "tooltip":  "Padding space between columns"
+                                                    "tooltip":  "Padding space between columns",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--padding",
-                                                    "tooltip":  "Padding space between columns"
+                                                    "tooltip":  "Padding space between columns",
+                                                    "argument_type":  "n"
                                                 }
                                             ]
                          },
@@ -2731,11 +2874,15 @@
                                                 },
                                                 {
                                                     "name":  "--color",
-                                                    "tooltip":  "color \u0027*!+-\u0027 corresponding to the branch"
+                                                    "tooltip":  "color \u0027*!+-\u0027 corresponding to the branch",
+                                                    "argument_type":  "when",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--more",
-                                                    "tooltip":  "show \u003cn\u003e more commits after the common ancestor"
+                                                    "tooltip":  "show \u003cn\u003e more commits after the common ancestor",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--list",
@@ -2860,7 +3007,8 @@
                                                 },
                                                 {
                                                     "name":  "--marker-size",
-                                                    "tooltip":  "for conflicts, use this marker size"
+                                                    "tooltip":  "for conflicts, use this marker size",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -2869,11 +3017,13 @@
                                                 },
                                                 {
                                                     "name":  "-L",
-                                                    "tooltip":  "set labels for file1/orig-file/file2"
+                                                    "tooltip":  "set labels for file1/orig-file/file2",
+                                                    "argument_type":  "name"
                                                 },
                                                 {
                                                     "name":  "-L",
-                                                    "tooltip":  "set labels for file1/orig-file/file2"
+                                                    "tooltip":  "set labels for file1/orig-file/file2",
+                                                    "argument_type":  "name"
                                                 }
                                             ]
                          },
@@ -2902,11 +3052,13 @@
                                                 {
                                                     "name":  "--file",
                                                     "tooltip":  "use given config file",
-                                                    "alias":  "-f"
+                                                    "alias":  "-f",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--blob",
-                                                    "tooltip":  "read config from given blob object"
+                                                    "tooltip":  "read config from given blob object",
+                                                    "argument_type":  "blob-id"
                                                 },
                                                 {
                                                     "name":  "--get",
@@ -3187,7 +3339,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--index-output",
-                                                    "tooltip":  "write resulting index to \u003cfile\u003e"
+                                                    "tooltip":  "write resulting index to \u003cfile\u003e",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--empty",
@@ -3224,7 +3377,8 @@
                                                 },
                                                 {
                                                     "name":  "--exclude-per-directory",
-                                                    "tooltip":  "allow explicitly ignored files to be overwritten"
+                                                    "tooltip":  "allow explicitly ignored files to be overwritten",
+                                                    "argument_type":  "gitignore"
                                                 },
                                                 {
                                                     "name":  "-i",
@@ -3360,11 +3514,13 @@
                                                 },
                                                 {
                                                     "name":  "-m",
-                                                    "tooltip":  "reason of the update"
+                                                    "tooltip":  "reason of the update",
+                                                    "argument_type":  "reason"
                                                 },
                                                 {
                                                     "name":  "-m",
-                                                    "tooltip":  "reason of the update"
+                                                    "tooltip":  "reason of the update",
+                                                    "argument_type":  "reason"
                                                 }
                                             ]
                          },
@@ -3408,12 +3564,14 @@
                                                 {
                                                     "name":  "--message",
                                                     "tooltip":  "tag message",
-                                                    "alias":  "-m"
+                                                    "alias":  "-m",
+                                                    "argument_type":  "message"
                                                 },
                                                 {
                                                     "name":  "--file",
                                                     "tooltip":  "read message from file",
-                                                    "alias":  "-F"
+                                                    "alias":  "-F",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--sign",
@@ -3422,12 +3580,14 @@
                                                 },
                                                 {
                                                     "name":  "--cleanup",
-                                                    "tooltip":  "how to strip spaces and #comments from message"
+                                                    "tooltip":  "how to strip spaces and #comments from message",
+                                                    "argument_type":  "mode"
                                                 },
                                                 {
                                                     "name":  "--local-user",
                                                     "tooltip":  "use another key to sign the tag",
-                                                    "alias":  "-u"
+                                                    "alias":  "-u",
+                                                    "argument_type":  "key-id"
                                                 },
                                                 {
                                                     "name":  "--force",
@@ -3440,23 +3600,29 @@
                                                 },
                                                 {
                                                     "name":  "--column",
-                                                    "tooltip":  "show tag list in columns"
+                                                    "tooltip":  "show tag list in columns",
+                                                    "argument_type":  "style",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--sort",
-                                                    "tooltip":  "sort tags"
+                                                    "tooltip":  "sort tags",
+                                                    "argument_type":  "type"
                                                 },
                                                 {
                                                     "name":  "--contains",
-                                                    "tooltip":  "print only tags that contain the commit"
+                                                    "tooltip":  "print only tags that contain the commit",
+                                                    "argument_type":  "commit"
                                                 },
                                                 {
                                                     "name":  "--points-at",
-                                                    "tooltip":  "print only tags of the object"
+                                                    "tooltip":  "print only tags of the object",
+                                                    "argument_type":  "object"
                                                 },
                                                 {
                                                     "name":  "--points-at",
-                                                    "tooltip":  "print only tags of the object"
+                                                    "tooltip":  "print only tags of the object",
+                                                    "argument_type":  "object"
                                                 }
                                             ]
                          },
@@ -3489,7 +3655,9 @@
                                                 },
                                                 {
                                                     "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s"
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--exact-match",
@@ -3497,11 +3665,13 @@
                                                 },
                                                 {
                                                     "name":  "--candidates",
-                                                    "tooltip":  "consider \u003cn\u003e most recent tags (default: 10)"
+                                                    "tooltip":  "consider \u003cn\u003e most recent tags (default: 10)",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--match",
-                                                    "tooltip":  "only consider tags matching \u003cpattern\u003e"
+                                                    "tooltip":  "only consider tags matching \u003cpattern\u003e",
+                                                    "argument_type":  "pattern"
                                                 },
                                                 {
                                                     "name":  "--always",
@@ -3509,11 +3679,15 @@
                                                 },
                                                 {
                                                     "name":  "--dirty",
-                                                    "tooltip":  "append \u003cmark\u003e on dirty working tree (default: \"-dirty\")"
+                                                    "tooltip":  "append \u003cmark\u003e on dirty working tree (default: \"-dirty\")",
+                                                    "argument_type":  "mark",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--dirty",
-                                                    "tooltip":  "append \u003cmark\u003e on dirty working tree (default: \"-dirty\")"
+                                                    "tooltip":  "append \u003cmark\u003e on dirty working tree (default: \"-dirty\")",
+                                                    "argument_type":  "mark",
+                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -3628,7 +3802,8 @@
                                                 },
                                                 {
                                                     "name":  "--refs",
-                                                    "tooltip":  "only use refs matching \u003cpattern\u003e"
+                                                    "tooltip":  "only use refs matching \u003cpattern\u003e",
+                                                    "argument_type":  "pattern"
                                                 },
                                                 {
                                                     "name":  "--all",
@@ -3657,7 +3832,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "-m",
-                                                    "tooltip":  "reason of the update"
+                                                    "tooltip":  "reason of the update",
+                                                    "argument_type":  "reason"
                                                 },
                                                 {
                                                     "name":  "-d",
@@ -3697,11 +3873,13 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--ref",
-                                                    "tooltip":  "use notes from \u003cnotes-ref\u003e"
+                                                    "tooltip":  "use notes from \u003cnotes-ref\u003e",
+                                                    "argument_type":  "notes-ref"
                                                 },
                                                 {
                                                     "name":  "--ref",
-                                                    "tooltip":  "use notes from \u003cnotes-ref\u003e"
+                                                    "tooltip":  "use notes from \u003cnotes-ref\u003e",
+                                                    "argument_type":  "notes-ref"
                                                 }
                                             ]
                          },
@@ -3774,7 +3952,8 @@
                                                 },
                                                 {
                                                     "name":  "--max-pack-size",
-                                                    "tooltip":  "maximum size of each output pack file"
+                                                    "tooltip":  "maximum size of each output pack file",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--local",
@@ -3786,15 +3965,18 @@
                                                 },
                                                 {
                                                     "name":  "--window",
-                                                    "tooltip":  "limit pack window by objects"
+                                                    "tooltip":  "limit pack window by objects",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--window-memory",
-                                                    "tooltip":  "limit pack window by memory in addition to object limit"
+                                                    "tooltip":  "limit pack window by memory in addition to object limit",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--depth",
-                                                    "tooltip":  "maximum length of delta chain allowed in the resulting pack"
+                                                    "tooltip":  "maximum length of delta chain allowed in the resulting pack",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--reuse-delta",
@@ -3810,7 +3992,8 @@
                                                 },
                                                 {
                                                     "name":  "--threads",
-                                                    "tooltip":  "use threads when searching for best delta matches"
+                                                    "tooltip":  "use threads when searching for best delta matches",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--non-empty",
@@ -3850,7 +4033,9 @@
                                                 },
                                                 {
                                                     "name":  "--unpack-unreachable",
-                                                    "tooltip":  "unpack unreachable objects newer than \u003ctime\u003e"
+                                                    "tooltip":  "unpack unreachable objects newer than \u003ctime\u003e",
+                                                    "argument_type":  "time",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--thin",
@@ -3866,7 +4051,8 @@
                                                 },
                                                 {
                                                     "name":  "--compression",
-                                                    "tooltip":  "pack compression level"
+                                                    "tooltip":  "pack compression level",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--keep-true-parents",
@@ -3898,23 +4084,28 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--progress",
-                                                    "tooltip":  "show progress after \u003cn\u003e objects"
+                                                    "tooltip":  "show progress after \u003cn\u003e objects",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--signed-tags",
-                                                    "tooltip":  "select handling of signed tags"
+                                                    "tooltip":  "select handling of signed tags",
+                                                    "argument_type":  "mode"
                                                 },
                                                 {
                                                     "name":  "--tag-of-filtered-object",
-                                                    "tooltip":  "select handling of tags that tag filtered objects"
+                                                    "tooltip":  "select handling of tags that tag filtered objects",
+                                                    "argument_type":  "mode"
                                                 },
                                                 {
                                                     "name":  "--export-marks",
-                                                    "tooltip":  "Dump marks to this file"
+                                                    "tooltip":  "Dump marks to this file",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--import-marks",
-                                                    "tooltip":  "Import marks from this file"
+                                                    "tooltip":  "Import marks from this file",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--fake-missing-tagger",
@@ -3934,7 +4125,8 @@
                                                 },
                                                 {
                                                     "name":  "--refspec",
-                                                    "tooltip":  "Apply refspec to exported refs"
+                                                    "tooltip":  "Apply refspec to exported refs",
+                                                    "argument_type":  "refspec"
                                                 },
                                                 {
                                                     "name":  "--anonymize",
@@ -4026,7 +4218,8 @@
                                                 },
                                                 {
                                                     "name":  "--upload-pack",
-                                                    "tooltip":  "path to upload pack on remote end"
+                                                    "tooltip":  "path to upload pack on remote end",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--force",
@@ -4054,7 +4247,9 @@
                                                 },
                                                 {
                                                     "name":  "--recurse-submodules",
-                                                    "tooltip":  "control recursive fetching of submodules"
+                                                    "tooltip":  "control recursive fetching of submodules",
+                                                    "argument_type":  "on-demand",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--dry-run",
@@ -4076,7 +4271,8 @@
                                                 },
                                                 {
                                                     "name":  "--depth",
-                                                    "tooltip":  "deepen history of shallow clone"
+                                                    "tooltip":  "deepen history of shallow clone",
+                                                    "argument_type":  "depth"
                                                 },
                                                 {
                                                     "name":  "--unshallow",
@@ -4088,11 +4284,13 @@
                                                 },
                                                 {
                                                     "name":  "--refmap",
-                                                    "tooltip":  "specify fetch refmap"
+                                                    "tooltip":  "specify fetch refmap",
+                                                    "argument_type":  "refmap"
                                                 },
                                                 {
                                                     "name":  "--refmap",
-                                                    "tooltip":  "specify fetch refmap"
+                                                    "tooltip":  "specify fetch refmap",
+                                                    "argument_type":  "refmap"
                                                 }
                                             ]
                          },
@@ -4149,7 +4347,8 @@
                                                 },
                                                 {
                                                     "name":  "--expire",
-                                                    "tooltip":  "expire objects older than \u003ctime\u003e"
+                                                    "tooltip":  "expire objects older than \u003ctime\u003e",
+                                                    "argument_type":  "expiry-date"
                                                 }
                                             ]
                          },
@@ -4210,22 +4409,27 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--log",
-                                                    "tooltip":  "populate log with at most \u003cn\u003e entries from shortlog"
+                                                    "tooltip":  "populate log with at most \u003cn\u003e entries from shortlog",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--message",
                                                     "tooltip":  "use \u003ctext\u003e as start of message",
-                                                    "alias":  "-m"
+                                                    "alias":  "-m",
+                                                    "argument_type":  "text"
                                                 },
                                                 {
                                                     "name":  "--file",
                                                     "tooltip":  "file to read from",
-                                                    "alias":  "-F"
+                                                    "alias":  "-F",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--file",
                                                     "tooltip":  "file to read from",
-                                                    "alias":  "-F"
+                                                    "alias":  "-F",
+                                                    "argument_type":  "file"
                                                 }
                                             ]
                          },
@@ -4256,7 +4460,9 @@
                                                 },
                                                 {
                                                     "name":  "--log",
-                                                    "tooltip":  "add (at most \u003cn\u003e) entries from shortlog to merge commit message"
+                                                    "tooltip":  "add (at most \u003cn\u003e) entries from shortlog to merge commit message",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--squash",
@@ -4285,7 +4491,8 @@
                                                 {
                                                     "name":  "--strategy",
                                                     "tooltip":  "merge strategy to use",
-                                                    "alias":  "-s"
+                                                    "alias":  "-s",
+                                                    "argument_type":  "strategy"
                                                 },
                                                 {
                                                     "name":  "--strategy-option",
@@ -4295,7 +4502,9 @@
                                                 {
                                                     "name":  "--gpg-sign",
                                                     "tooltip":  "GPG sign commit",
-                                                    "alias":  "-S"
+                                                    "alias":  "-S",
+                                                    "argument_type":  "key-id",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--all",
@@ -4308,7 +4517,8 @@
                                                 },
                                                 {
                                                     "name":  "--upload-pack",
-                                                    "tooltip":  "path to upload pack on remote end"
+                                                    "tooltip":  "path to upload pack on remote end",
+                                                    "argument_type":  "path"
                                                 },
                                                 {
                                                     "name":  "--force",
@@ -4327,7 +4537,9 @@
                                                 },
                                                 {
                                                     "name":  "--recurse-submodules",
-                                                    "tooltip":  "control recursive fetching of submodules"
+                                                    "tooltip":  "control recursive fetching of submodules",
+                                                    "argument_type":  "on-demand",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--dry-run",
@@ -4340,7 +4552,8 @@
                                                 },
                                                 {
                                                     "name":  "--depth",
-                                                    "tooltip":  "deepen history of shallow clone"
+                                                    "tooltip":  "deepen history of shallow clone",
+                                                    "argument_type":  "depth"
                                                 },
                                                 {
                                                     "name":  "--unshallow",
@@ -4352,11 +4565,13 @@
                                                 },
                                                 {
                                                     "name":  "--refmap",
-                                                    "tooltip":  "specify fetch refmap"
+                                                    "tooltip":  "specify fetch refmap",
+                                                    "argument_type":  "refmap"
                                                 },
                                                 {
                                                     "name":  "--refmap",
-                                                    "tooltip":  "specify fetch refmap"
+                                                    "tooltip":  "specify fetch refmap",
+                                                    "argument_type":  "refmap"
                                                 }
                                             ]
                          },
@@ -4409,19 +4624,23 @@
                                                 },
                                                 {
                                                     "name":  "--count",
-                                                    "tooltip":  "show only \u003cn\u003e matched refs"
+                                                    "tooltip":  "show only \u003cn\u003e matched refs",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--format",
-                                                    "tooltip":  "format to use for the output"
+                                                    "tooltip":  "format to use for the output",
+                                                    "argument_type":  "format"
                                                 },
                                                 {
                                                     "name":  "--sort",
-                                                    "tooltip":  "field name to sort on"
+                                                    "tooltip":  "field name to sort on",
+                                                    "argument_type":  "key"
                                                 },
                                                 {
                                                     "name":  "--sort",
-                                                    "tooltip":  "field name to sort on"
+                                                    "tooltip":  "field name to sort on",
+                                                    "argument_type":  "key"
                                                 }
                                             ]
                          },
@@ -4440,7 +4659,8 @@
                                                 },
                                                 {
                                                     "name":  "--repo",
-                                                    "tooltip":  "repository"
+                                                    "tooltip":  "repository",
+                                                    "argument_type":  "repository"
                                                 },
                                                 {
                                                     "name":  "--all",
@@ -4478,11 +4698,13 @@
                                                 },
                                                 {
                                                     "name":  "--receive-pack",
-                                                    "tooltip":  "receive pack program"
+                                                    "tooltip":  "receive pack program",
+                                                    "argument_type":  "receive-pack"
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "receive pack program"
+                                                    "tooltip":  "receive pack program",
+                                                    "argument_type":  "receive-pack"
                                                 },
                                                 {
                                                     "name":  "--set-upstream",
@@ -4554,25 +4776,30 @@
                                                 },
                                                 {
                                                     "name":  "--suffix",
-                                                    "tooltip":  "use \u003csfx\u003e instead of \u0027.patch\u0027"
+                                                    "tooltip":  "use \u003csfx\u003e instead of \u0027.patch\u0027",
+                                                    "argument_type":  "sfx"
                                                 },
                                                 {
                                                     "name":  "--start-number",
-                                                    "tooltip":  "start numbering patches at \u003cn\u003e instead of 1"
+                                                    "tooltip":  "start numbering patches at \u003cn\u003e instead of 1",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--reroll-count",
                                                     "tooltip":  "mark the series as Nth re-roll",
-                                                    "alias":  "-v"
+                                                    "alias":  "-v",
+                                                    "argument_type":  "n"
                                                 },
                                                 {
                                                     "name":  "--subject-prefix",
-                                                    "tooltip":  "Use [\u003cprefix\u003e] instead of [PATCH]"
+                                                    "tooltip":  "Use [\u003cprefix\u003e] instead of [PATCH]",
+                                                    "argument_type":  "prefix"
                                                 },
                                                 {
                                                     "name":  "--output-directory",
                                                     "tooltip":  "store resulting files in \u003cdir\u003e",
-                                                    "alias":  "-o"
+                                                    "alias":  "-o",
+                                                    "argument_type":  "dir"
                                                 },
                                                 {
                                                     "name":  "--keep-subject",
@@ -4594,43 +4821,57 @@
                                                 },
                                                 {
                                                     "name":  "--add-header",
-                                                    "tooltip":  "add email header"
+                                                    "tooltip":  "add email header",
+                                                    "argument_type":  "header"
                                                 },
                                                 {
                                                     "name":  "--to",
-                                                    "tooltip":  "add To: header"
+                                                    "tooltip":  "add To: header",
+                                                    "argument_type":  "email"
                                                 },
                                                 {
                                                     "name":  "--cc",
-                                                    "tooltip":  "add Cc: header"
+                                                    "tooltip":  "add Cc: header",
+                                                    "argument_type":  "email"
                                                 },
                                                 {
                                                     "name":  "--from",
-                                                    "tooltip":  "set From address to \u003cident\u003e (or committer ident if absent)"
+                                                    "tooltip":  "set From address to \u003cident\u003e (or committer ident if absent)",
+                                                    "argument_type":  "ident",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--in-reply-to",
-                                                    "tooltip":  "make first mail a reply to \u003cmessage-id\u003e"
+                                                    "tooltip":  "make first mail a reply to \u003cmessage-id\u003e",
+                                                    "argument_type":  "message-id"
                                                 },
                                                 {
                                                     "name":  "--attach",
-                                                    "tooltip":  "attach the patch"
+                                                    "tooltip":  "attach the patch",
+                                                    "argument_type":  "boundary",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--inline",
-                                                    "tooltip":  "inline the patch"
+                                                    "tooltip":  "inline the patch",
+                                                    "argument_type":  "boundary",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--thread",
-                                                    "tooltip":  "enable message threading, styles: shallow, deep"
+                                                    "tooltip":  "enable message threading, styles: shallow, deep",
+                                                    "argument_type":  "style",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--signature",
-                                                    "tooltip":  "add a signature"
+                                                    "tooltip":  "add a signature",
+                                                    "argument_type":  "signature"
                                                 },
                                                 {
                                                     "name":  "--signature-file",
-                                                    "tooltip":  "add a signature from a file"
+                                                    "tooltip":  "add a signature from a file",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -4746,7 +4987,8 @@
                              "parameters":  [
                                                 {
                                                     "name":  "--index-output",
-                                                    "tooltip":  "write resulting index to \u003cfile\u003e"
+                                                    "tooltip":  "write resulting index to \u003cfile\u003e",
+                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--empty",
@@ -4783,7 +5025,8 @@
                                                 },
                                                 {
                                                     "name":  "--exclude-per-directory",
-                                                    "tooltip":  "allow explicitly ignored files to be overwritten"
+                                                    "tooltip":  "allow explicitly ignored files to be overwritten",
+                                                    "argument_type":  "gitignore"
                                                 },
                                                 {
                                                     "name":  "-i",

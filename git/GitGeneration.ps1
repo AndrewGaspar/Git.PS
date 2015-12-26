@@ -27,7 +27,17 @@ $sub_commands = & {
             
             if($_.LongParameter -and $_.ShortParameter)
             {
-                Add-Member -InputObject $obj -NotePropertyName alias -NotePropertyValue $_.ShortParameter
+                $obj | Add-Member -NotePropertyName alias -NotePropertyValue $_.ShortParameter
+            }
+            
+            if($_.ArgumentName)
+            {
+                $obj | Add-Member -NotePropertyName argument_type -NotePropertyValue $_.ArgumentName
+                
+                if($_.IsArgumentOptional)
+                {
+                    $obj | Add-Member -NotePropertyName argument_optional -NotePropertyValue $_.IsArgumentOptional
+                }
             }
             
             $obj
