@@ -72,39 +72,19 @@
                                             ]
                          },
                          {
-                             "command":  "gc",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "gc"
                          },
                          {
-                             "command":  "receive-pack",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "receive-pack"
                          },
                          {
-                             "command":  "add--interactive",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "add--interactive"
                          },
                          {
-                             "command":  "get-tar-commit-id",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "get-tar-commit-id"
                          },
                          {
-                             "command":  "reflog",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "reflog"
                          },
                          {
                              "command":  "am",
@@ -251,18 +231,10 @@
                                             ]
                          },
                          {
-                             "command":  "grep",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "grep"
                          },
                          {
-                             "command":  "relink",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "relink"
                          },
                          {
                              "command":  "annotate",
@@ -364,10 +336,7 @@
                                             ]
                          },
                          {
-                             "command":  "gui",
-                             "parameters":  {
-
-                                            }
+                             "command":  "gui"
                          },
                          {
                              "command":  "remote",
@@ -513,35 +482,19 @@
                                             ]
                          },
                          {
-                             "command":  "gui--askpass",
-                             "parameters":  {
-
-                                            }
+                             "command":  "gui--askpass"
                          },
                          {
-                             "command":  "remote-ext",
-                             "parameters":  {
-
-                                            }
+                             "command":  "remote-ext"
                          },
                          {
-                             "command":  "archimport",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "archimport"
                          },
                          {
-                             "command":  "gui--askyesno",
-                             "parameters":  {
-
-                                            }
+                             "command":  "gui--askyesno"
                          },
                          {
-                             "command":  "remote-fd",
-                             "parameters":  {
-
-                                            }
+                             "command":  "remote-fd"
                          },
                          {
                              "command":  "archive",
@@ -606,23 +559,13 @@
                                             ]
                          },
                          {
-                             "command":  "gui.tcl",
-                             "parameters":  {
-
-                                            }
+                             "command":  "gui.tcl"
                          },
                          {
-                             "command":  "remote-ftp",
-                             "parameters":  {
-
-                                            }
+                             "command":  "remote-ftp"
                          },
                          {
-                             "command":  "bisect",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "bisect"
                          },
                          {
                              "command":  "hash-object",
@@ -665,10 +608,7 @@
                                             ]
                          },
                          {
-                             "command":  "remote-ftps",
-                             "parameters":  {
-
-                                            }
+                             "command":  "remote-ftps"
                          },
                          {
                              "command":  "bisect--helper",
@@ -723,10 +663,7 @@
                                             ]
                          },
                          {
-                             "command":  "remote-http",
-                             "parameters":  {
-
-                                            }
+                             "command":  "remote-http"
                          },
                          {
                              "command":  "blame",
@@ -828,31 +765,16 @@
                                             ]
                          },
                          {
-                             "command":  "http-backend",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "http-backend"
                          },
                          {
-                             "command":  "remote-https",
-                             "parameters":  {
-
-                                            }
+                             "command":  "remote-https"
                          },
                          {
-                             "command":  "branch",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "branch"
                          },
                          {
-                             "command":  "http-fetch",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "http-fetch"
                          },
                          {
                              "command":  "repack",
@@ -932,18 +854,10 @@
                                             ]
                          },
                          {
-                             "command":  "bundle",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "bundle"
                          },
                          {
-                             "command":  "http-push",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "http-push"
                          },
                          {
                              "command":  "replace",
@@ -1109,11 +1023,7 @@
                                             ]
                          },
                          {
-                             "command":  "index-pack",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "index-pack"
                          },
                          {
                              "command":  "rerere",
@@ -1283,18 +1193,10 @@
                                             ]
                          },
                          {
-                             "command":  "rev-list",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "rev-list"
                          },
                          {
-                             "command":  "check-ref-format",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "check-ref-format"
                          },
                          {
                              "command":  "instaweb",
@@ -1343,11 +1245,7 @@
                                             ]
                          },
                          {
-                             "command":  "rev-parse",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "rev-parse"
                          },
                          {
                              "command":  "checkout",
@@ -1509,11 +1407,7 @@
                                             ]
                          },
                          {
-                             "command":  "checkout-index",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "checkout-index"
                          },
                          {
                              "command":  "log",
@@ -1599,11 +1493,7 @@
                                             ]
                          },
                          {
-                             "command":  "ls-files",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "ls-files"
                          },
                          {
                              "command":  "send-email",
@@ -1803,11 +1693,7 @@
                                             ]
                          },
                          {
-                             "command":  "ls-remote",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "ls-remote"
                          },
                          {
                              "command":  "send-pack",
@@ -1886,10 +1772,7 @@
                                             ]
                          },
                          {
-                             "command":  "citool",
-                             "parameters":  {
-
-                                            }
+                             "command":  "citool"
                          },
                          {
                              "command":  "ls-tree",
@@ -1946,10 +1829,7 @@
                                             ]
                          },
                          {
-                             "command":  "sh-i18n--envsubst",
-                             "parameters":  {
-
-                                            }
+                             "command":  "sh-i18n--envsubst"
                          },
                          {
                              "command":  "clean",
@@ -1999,11 +1879,7 @@
                                             ]
                          },
                          {
-                             "command":  "mailinfo",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "mailinfo"
                          },
                          {
                              "command":  "shortlog",
@@ -2141,11 +2017,7 @@
                                             ]
                          },
                          {
-                             "command":  "mailsplit",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "mailsplit"
                          },
                          {
                              "command":  "show",
@@ -2220,11 +2092,7 @@
                                             ]
                          },
                          {
-                             "command":  "merge",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge"
                          },
                          {
                              "command":  "show-branch",
@@ -2298,11 +2166,7 @@
                                             ]
                          },
                          {
-                             "command":  "commit",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "commit"
                          },
                          {
                              "command":  "merge-base",
@@ -2335,18 +2199,10 @@
                                             ]
                          },
                          {
-                             "command":  "show-index",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "show-index"
                          },
                          {
-                             "command":  "commit-tree",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "commit-tree"
                          },
                          {
                              "command":  "merge-file",
@@ -2395,11 +2251,7 @@
                                             ]
                          },
                          {
-                             "command":  "show-ref",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "show-ref"
                          },
                          {
                              "command":  "config",
@@ -2521,11 +2373,7 @@
                                             ]
                          },
                          {
-                             "command":  "merge-index",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-index"
                          },
                          {
                              "command":  "stage",
@@ -2618,85 +2466,40 @@
                                             ]
                          },
                          {
-                             "command":  "merge-octopus",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-octopus"
                          },
                          {
-                             "command":  "stash",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "stash"
                          },
                          {
-                             "command":  "credential",
-                             "parameters":  {
-
-                                            }
+                             "command":  "credential"
                          },
                          {
-                             "command":  "merge-one-file",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-one-file"
                          },
                          {
-                             "command":  "status",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "status"
                          },
                          {
-                             "command":  "credential-store",
-                             "parameters":  {
-
-                                            }
+                             "command":  "credential-store"
                          },
                          {
-                             "command":  "merge-ours",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-ours"
                          },
                          {
-                             "command":  "stripspace",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "stripspace"
                          },
                          {
-                             "command":  "credential-wincred",
-                             "parameters":  {
-
-                                            }
+                             "command":  "credential-wincred"
                          },
                          {
-                             "command":  "merge-recursive",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-recursive"
                          },
                          {
-                             "command":  "submodule",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "submodule"
                          },
                          {
-                             "command":  "cvsexportcommit",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "cvsexportcommit"
                          },
                          {
                              "command":  "merge-resolve",
@@ -2825,39 +2628,19 @@
                                             ]
                          },
                          {
-                             "command":  "cvsimport",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "cvsimport"
                          },
                          {
-                             "command":  "merge-subtree",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-subtree"
                          },
                          {
-                             "command":  "svn",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "svn"
                          },
                          {
-                             "command":  "cvsserver",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "cvsserver"
                          },
                          {
-                             "command":  "merge-tree",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "merge-tree"
                          },
                          {
                              "command":  "symbolic-ref",
@@ -2889,18 +2672,10 @@
                                             ]
                          },
                          {
-                             "command":  "daemon",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "daemon"
                          },
                          {
-                             "command":  "mergetool",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "mergetool"
                          },
                          {
                              "command":  "tag",
@@ -3056,25 +2831,13 @@
                                             ]
                          },
                          {
-                             "command":  "mktag",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "mktag"
                          },
                          {
-                             "command":  "unpack-file",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "unpack-file"
                          },
                          {
-                             "command":  "diff",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "diff"
                          },
                          {
                              "command":  "mktree",
@@ -3098,18 +2861,10 @@
                                             ]
                          },
                          {
-                             "command":  "unpack-objects",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "unpack-objects"
                          },
                          {
-                             "command":  "diff-files",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "diff-files"
                          },
                          {
                              "command":  "mv",
@@ -3140,18 +2895,10 @@
                                             ]
                          },
                          {
-                             "command":  "update-index",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "update-index"
                          },
                          {
-                             "command":  "diff-index",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "diff-index"
                          },
                          {
                              "command":  "name-rev",
@@ -3226,11 +2973,7 @@
                                             ]
                          },
                          {
-                             "command":  "diff-tree",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "diff-tree"
                          },
                          {
                              "command":  "notes",
@@ -3263,32 +3006,16 @@
                                             ]
                          },
                          {
-                             "command":  "difftool",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "difftool"
                          },
                          {
-                             "command":  "p4",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "p4"
                          },
                          {
-                             "command":  "upload-archive",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "upload-archive"
                          },
                          {
-                             "command":  "difftool--helper",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "difftool--helper"
                          },
                          {
                              "command":  "pack-objects",
@@ -3437,11 +3164,7 @@
                                             ]
                          },
                          {
-                             "command":  "upload-pack",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "upload-pack"
                          },
                          {
                              "command":  "fast-export",
@@ -3503,25 +3226,13 @@
                                             ]
                          },
                          {
-                             "command":  "pack-redundant",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "pack-redundant"
                          },
                          {
-                             "command":  "var",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "var"
                          },
                          {
-                             "command":  "fast-import",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "fast-import"
                          },
                          {
                              "command":  "pack-refs",
@@ -3659,11 +3370,7 @@
                                             ]
                          },
                          {
-                             "command":  "patch-id",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "patch-id"
                          },
                          {
                              "command":  "verify-pack",
@@ -3686,11 +3393,7 @@
                                             ]
                          },
                          {
-                             "command":  "fetch-pack",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "fetch-pack"
                          },
                          {
                              "command":  "prune",
@@ -3735,11 +3438,7 @@
                                             ]
                          },
                          {
-                             "command":  "filter-branch",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "filter-branch"
                          },
                          {
                              "command":  "prune-packed",
@@ -3762,11 +3461,7 @@
                                             ]
                          },
                          {
-                             "command":  "web--browse",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "web--browse"
                          },
                          {
                              "command":  "fmt-merge-msg",
@@ -4102,11 +3797,7 @@
                                             ]
                          },
                          {
-                             "command":  "worktree",
-                             "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
-                                            }
+                             "command":  "worktree"
                          },
                          {
                              "command":  "format-patch",

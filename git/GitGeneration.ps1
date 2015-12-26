@@ -10,43 +10,53 @@ $sub_commands = & {
     $preGeneration.sub_commands
     
     Get-GitCommand | ForEach-Object {
-        $parameters = $_.Parameters | ForEach-Object {
-            if($_.LongParameter)
-            {
-                $parameter = $_.LongParameter
-            }
-            else
-            {
-                $parameter = $_.ShortParameter
-            }
-            
-            $obj = New-Object PSCustomObject -Property @{
-                name = $parameter
-                tooltip = $_.Description
-            }
-            
-            if($_.LongParameter -and $_.ShortParameter)
-            {
-                $obj | Add-Member -NotePropertyName alias -NotePropertyValue $_.ShortParameter
-            }
-            
-            if($_.ArgumentName)
-            {
-                $obj | Add-Member -NotePropertyName argument_type -NotePropertyValue $_.ArgumentName
-                
-                if($_.IsArgumentOptional)
+        $parameters = $_.Parameters |
+            Where-Object {
+                $_
+            } |
+            ForEach-Object {
+                if($_.LongParameter)
                 {
-                    $obj | Add-Member -NotePropertyName argument_optional -NotePropertyValue $_.IsArgumentOptional
+                    $parameter = $_.LongParameter
                 }
+                else
+                {
+                    $parameter = $_.ShortParameter
+                }
+                
+                $obj = New-Object PSCustomObject -Property @{
+                    name = $parameter
+                    tooltip = $_.Description
+                }
+                
+                if($_.LongParameter -and $_.ShortParameter)
+                {
+                    $obj | Add-Member -NotePropertyName alias -NotePropertyValue $_.ShortParameter
+                }
+                
+                if($_.ArgumentName)
+                {
+                    $obj | Add-Member -NotePropertyName argument_type -NotePropertyValue $_.ArgumentName
+                    
+                    if($_.IsArgumentOptional)
+                    {
+                        $obj | Add-Member -NotePropertyName argument_optional -NotePropertyValue $_.IsArgumentOptional
+                    }
+                }
+                
+                $obj
             }
-            
-            $obj
+        
+        $obj = New-Object PSCustomObject -Property @{
+            command = $_.Name
         }
         
-        New-Object PSCustomObject -Property @{
-            command = $_.Name
-            parameters = $parameters
+        if($parameters)
+        {
+            $obj | Add-Member -NotePropertyName parameters -NotePropertyValue $parameters
         }
+        
+        $obj
     }
 } | Where-Object {
     $_
