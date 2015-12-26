@@ -365,102 +365,9 @@
                          },
                          {
                              "command":  "gui",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--incremental",
-                                                    "tooltip":  "Show blame entries as we find them, incrementally"
-                                                },
-                                                {
-                                                    "name":  "-b",
-                                                    "tooltip":  "Show blank SHA-1 for boundary commits (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "--root",
-                                                    "tooltip":  "Do not treat root commits as boundaries (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "--show-stats",
-                                                    "tooltip":  "Show work cost statistics"
-                                                },
-                                                {
-                                                    "name":  "--score-debug",
-                                                    "tooltip":  "Show output score for blame entries"
-                                                },
-                                                {
-                                                    "name":  "--show-name",
-                                                    "tooltip":  "Show original filename (Default: auto)",
-                                                    "alias":  "-f"
-                                                },
-                                                {
-                                                    "name":  "--show-number",
-                                                    "tooltip":  "Show original linenumber (Default: off)",
-                                                    "alias":  "-n"
-                                                },
-                                                {
-                                                    "name":  "--porcelain",
-                                                    "tooltip":  "Show in a format designed for machine consumption",
-                                                    "alias":  "-p"
-                                                },
-                                                {
-                                                    "name":  "--line-porcelain",
-                                                    "tooltip":  "Show porcelain format with per-line commit information"
-                                                },
-                                                {
-                                                    "name":  "-c",
-                                                    "tooltip":  "Use the same output mode as git-annotate (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "-t",
-                                                    "tooltip":  "Show raw timestamp (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "-l",
-                                                    "tooltip":  "Show long commit SHA1 (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "-s",
-                                                    "tooltip":  "Suppress author name and timestamp (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "--show-email",
-                                                    "tooltip":  "Show author email instead of name (Default: off)",
-                                                    "alias":  "-e"
-                                                },
-                                                {
-                                                    "name":  "-w",
-                                                    "tooltip":  "Ignore whitespace differences"
-                                                },
-                                                {
-                                                    "name":  "--minimal",
-                                                    "tooltip":  "Spend extra cycles to find better match"
-                                                },
-                                                {
-                                                    "name":  "-S",
-                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--contents",
-                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "\u003cn,m\u003e              Process only line range n,m, counting from 1"
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "remote",
@@ -607,259 +514,15 @@
                          },
                          {
                              "command":  "gui--askpass",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--exclude",
-                                                    "tooltip":  "don\u0027t apply changes matching the given path",
-                                                    "argument_type":  "path"
-                                                },
-                                                {
-                                                    "name":  "--include",
-                                                    "tooltip":  "apply changes matching the given path",
-                                                    "argument_type":  "path"
-                                                },
-                                                {
-                                                    "name":  "-p",
-                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths",
-                                                    "argument_type":  "num"
-                                                },
-                                                {
-                                                    "name":  "--no-add",
-                                                    "tooltip":  "ignore additions made by the patch"
-                                                },
-                                                {
-                                                    "name":  "--stat",
-                                                    "tooltip":  "instead of applying the patch, output diffstat for the input"
-                                                },
-                                                {
-                                                    "name":  "--numstat",
-                                                    "tooltip":  "show number of added and deleted lines in decimal notation"
-                                                },
-                                                {
-                                                    "name":  "--summary",
-                                                    "tooltip":  "instead of applying the patch, output a summary for the input"
-                                                },
-                                                {
-                                                    "name":  "--check",
-                                                    "tooltip":  "instead of applying the patch, see if the patch is applicable"
-                                                },
-                                                {
-                                                    "name":  "--index",
-                                                    "tooltip":  "make sure the patch is applicable to the current index"
-                                                },
-                                                {
-                                                    "name":  "--cached",
-                                                    "tooltip":  "apply a patch without touching the working tree"
-                                                },
-                                                {
-                                                    "name":  "--unsafe-paths",
-                                                    "tooltip":  "accept a patch that touches outside the working area"
-                                                },
-                                                {
-                                                    "name":  "--apply",
-                                                    "tooltip":  "also apply the patch (use with --stat/--summary/--check)"
-                                                },
-                                                {
-                                                    "name":  "--3way",
-                                                    "tooltip":  "attempt three-way merge if a patch does not apply",
-                                                    "alias":  "-3"
-                                                },
-                                                {
-                                                    "name":  "--build-fake-ancestor",
-                                                    "tooltip":  "build a temporary index based on embedded index information",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "-z",
-                                                    "tooltip":  "paths are separated with NUL character"
-                                                },
-                                                {
-                                                    "name":  "-C",
-                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match",
-                                                    "argument_type":  "n"
-                                                },
-                                                {
-                                                    "name":  "--whitespace",
-                                                    "tooltip":  "detect new or modified lines that have whitespace errors",
-                                                    "argument_type":  "action"
-                                                },
-                                                {
-                                                    "name":  "--ignore-space-change",
-                                                    "tooltip":  "ignore changes in whitespace when finding context"
-                                                },
-                                                {
-                                                    "name":  "--ignore-whitespace",
-                                                    "tooltip":  "ignore changes in whitespace when finding context"
-                                                },
-                                                {
-                                                    "name":  "--reverse",
-                                                    "tooltip":  "apply the patch in reverse",
-                                                    "alias":  "-R"
-                                                },
-                                                {
-                                                    "name":  "--unidiff-zero",
-                                                    "tooltip":  "don\u0027t expect at least one line of context"
-                                                },
-                                                {
-                                                    "name":  "--reject",
-                                                    "tooltip":  "leave the rejected hunks in corresponding *.rej files"
-                                                },
-                                                {
-                                                    "name":  "--allow-overlap",
-                                                    "tooltip":  "allow overlapping hunks"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--inaccurate-eof",
-                                                    "tooltip":  "tolerate incorrectly detected missing new-line at the end of file"
-                                                },
-                                                {
-                                                    "name":  "--recount",
-                                                    "tooltip":  "do not trust the line counts in the hunk headers"
-                                                },
-                                                {
-                                                    "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
-                                                    "argument_type":  "root"
-                                                },
-                                                {
-                                                    "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
-                                                    "argument_type":  "root"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "remote-ext",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--exclude",
-                                                    "tooltip":  "don\u0027t apply changes matching the given path",
-                                                    "argument_type":  "path"
-                                                },
-                                                {
-                                                    "name":  "--include",
-                                                    "tooltip":  "apply changes matching the given path",
-                                                    "argument_type":  "path"
-                                                },
-                                                {
-                                                    "name":  "-p",
-                                                    "tooltip":  "remove \u003cnum\u003e leading slashes from traditional diff paths",
-                                                    "argument_type":  "num"
-                                                },
-                                                {
-                                                    "name":  "--no-add",
-                                                    "tooltip":  "ignore additions made by the patch"
-                                                },
-                                                {
-                                                    "name":  "--stat",
-                                                    "tooltip":  "instead of applying the patch, output diffstat for the input"
-                                                },
-                                                {
-                                                    "name":  "--numstat",
-                                                    "tooltip":  "show number of added and deleted lines in decimal notation"
-                                                },
-                                                {
-                                                    "name":  "--summary",
-                                                    "tooltip":  "instead of applying the patch, output a summary for the input"
-                                                },
-                                                {
-                                                    "name":  "--check",
-                                                    "tooltip":  "instead of applying the patch, see if the patch is applicable"
-                                                },
-                                                {
-                                                    "name":  "--index",
-                                                    "tooltip":  "make sure the patch is applicable to the current index"
-                                                },
-                                                {
-                                                    "name":  "--cached",
-                                                    "tooltip":  "apply a patch without touching the working tree"
-                                                },
-                                                {
-                                                    "name":  "--unsafe-paths",
-                                                    "tooltip":  "accept a patch that touches outside the working area"
-                                                },
-                                                {
-                                                    "name":  "--apply",
-                                                    "tooltip":  "also apply the patch (use with --stat/--summary/--check)"
-                                                },
-                                                {
-                                                    "name":  "--3way",
-                                                    "tooltip":  "attempt three-way merge if a patch does not apply",
-                                                    "alias":  "-3"
-                                                },
-                                                {
-                                                    "name":  "--build-fake-ancestor",
-                                                    "tooltip":  "build a temporary index based on embedded index information",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "-z",
-                                                    "tooltip":  "paths are separated with NUL character"
-                                                },
-                                                {
-                                                    "name":  "-C",
-                                                    "tooltip":  "ensure at least \u003cn\u003e lines of context match",
-                                                    "argument_type":  "n"
-                                                },
-                                                {
-                                                    "name":  "--whitespace",
-                                                    "tooltip":  "detect new or modified lines that have whitespace errors",
-                                                    "argument_type":  "action"
-                                                },
-                                                {
-                                                    "name":  "--ignore-space-change",
-                                                    "tooltip":  "ignore changes in whitespace when finding context"
-                                                },
-                                                {
-                                                    "name":  "--ignore-whitespace",
-                                                    "tooltip":  "ignore changes in whitespace when finding context"
-                                                },
-                                                {
-                                                    "name":  "--reverse",
-                                                    "tooltip":  "apply the patch in reverse",
-                                                    "alias":  "-R"
-                                                },
-                                                {
-                                                    "name":  "--unidiff-zero",
-                                                    "tooltip":  "don\u0027t expect at least one line of context"
-                                                },
-                                                {
-                                                    "name":  "--reject",
-                                                    "tooltip":  "leave the rejected hunks in corresponding *.rej files"
-                                                },
-                                                {
-                                                    "name":  "--allow-overlap",
-                                                    "tooltip":  "allow overlapping hunks"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--inaccurate-eof",
-                                                    "tooltip":  "tolerate incorrectly detected missing new-line at the end of file"
-                                                },
-                                                {
-                                                    "name":  "--recount",
-                                                    "tooltip":  "do not trust the line counts in the hunk headers"
-                                                },
-                                                {
-                                                    "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
-                                                    "argument_type":  "root"
-                                                },
-                                                {
-                                                    "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
-                                                    "argument_type":  "root"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "archimport",
@@ -871,15 +534,13 @@
                          {
                              "command":  "gui--askyesno",
                              "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
+
                                             }
                          },
                          {
                              "command":  "remote-fd",
                              "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
+
                                             }
                          },
                          {
@@ -946,127 +607,15 @@
                          },
                          {
                              "command":  "gui.tcl",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--format",
-                                                    "tooltip":  "archive format",
-                                                    "argument_type":  "fmt"
-                                                },
-                                                {
-                                                    "name":  "--prefix",
-                                                    "tooltip":  "prepend prefix to each pathname in the archive",
-                                                    "argument_type":  "prefix"
-                                                },
-                                                {
-                                                    "name":  "--output",
-                                                    "tooltip":  "write the archive to this file",
-                                                    "alias":  "-o",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--worktree-attributes",
-                                                    "tooltip":  "read .gitattributes in working directory"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "report archived files on stderr",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "-0",
-                                                    "tooltip":  "store only"
-                                                },
-                                                {
-                                                    "name":  "-1",
-                                                    "tooltip":  "compress faster"
-                                                },
-                                                {
-                                                    "name":  "-9",
-                                                    "tooltip":  "compress better"
-                                                },
-                                                {
-                                                    "name":  "--list",
-                                                    "tooltip":  "list supported archive formats",
-                                                    "alias":  "-l"
-                                                },
-                                                {
-                                                    "name":  "--remote",
-                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e",
-                                                    "argument_type":  "repo"
-                                                },
-                                                {
-                                                    "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command",
-                                                    "argument_type":  "command"
-                                                },
-                                                {
-                                                    "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command",
-                                                    "argument_type":  "command"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "remote-ftp",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--format",
-                                                    "tooltip":  "archive format",
-                                                    "argument_type":  "fmt"
-                                                },
-                                                {
-                                                    "name":  "--prefix",
-                                                    "tooltip":  "prepend prefix to each pathname in the archive",
-                                                    "argument_type":  "prefix"
-                                                },
-                                                {
-                                                    "name":  "--output",
-                                                    "tooltip":  "write the archive to this file",
-                                                    "alias":  "-o",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--worktree-attributes",
-                                                    "tooltip":  "read .gitattributes in working directory"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "report archived files on stderr",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "-0",
-                                                    "tooltip":  "store only"
-                                                },
-                                                {
-                                                    "name":  "-1",
-                                                    "tooltip":  "compress faster"
-                                                },
-                                                {
-                                                    "name":  "-9",
-                                                    "tooltip":  "compress better"
-                                                },
-                                                {
-                                                    "name":  "--list",
-                                                    "tooltip":  "list supported archive formats",
-                                                    "alias":  "-l"
-                                                },
-                                                {
-                                                    "name":  "--remote",
-                                                    "tooltip":  "retrieve the archive from remote repository \u003crepo\u003e",
-                                                    "argument_type":  "repo"
-                                                },
-                                                {
-                                                    "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command",
-                                                    "argument_type":  "command"
-                                                },
-                                                {
-                                                    "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command",
-                                                    "argument_type":  "command"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "bisect",
@@ -1117,43 +666,9 @@
                          },
                          {
                              "command":  "remote-ftps",
-                             "parameters":  [
-                                                {
-                                                    "name":  "-t",
-                                                    "tooltip":  "object type",
-                                                    "argument_type":  "type"
-                                                },
-                                                {
-                                                    "name":  "-w",
-                                                    "tooltip":  "write the object into the object database"
-                                                },
-                                                {
-                                                    "name":  "--stdin",
-                                                    "tooltip":  "read the object from stdin"
-                                                },
-                                                {
-                                                    "name":  "--stdin-paths",
-                                                    "tooltip":  "read file names from stdin"
-                                                },
-                                                {
-                                                    "name":  "--no-filters",
-                                                    "tooltip":  "store file as is without filters"
-                                                },
-                                                {
-                                                    "name":  "--literally",
-                                                    "tooltip":  "just hash any random garbage to create corrupt objects for debugging Git"
-                                                },
-                                                {
-                                                    "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path",
-                                                    "argument_type":  "file"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "bisect--helper",
@@ -1209,38 +724,9 @@
                          },
                          {
                              "command":  "remote-http",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--all",
-                                                    "tooltip":  "print all available commands",
-                                                    "alias":  "-a"
-                                                },
-                                                {
-                                                    "name":  "--guides",
-                                                    "tooltip":  "print list of useful guides",
-                                                    "alias":  "-g"
-                                                },
-                                                {
-                                                    "name":  "--man",
-                                                    "tooltip":  "show man page",
-                                                    "alias":  "-m"
-                                                },
-                                                {
-                                                    "name":  "--web",
-                                                    "tooltip":  "show manual in web browser",
-                                                    "alias":  "-w"
-                                                },
-                                                {
-                                                    "name":  "--info",
-                                                    "tooltip":  "show info page",
-                                                    "alias":  "-i"
-                                                },
-                                                {
-                                                    "name":  "--info",
-                                                    "tooltip":  "show info page",
-                                                    "alias":  "-i"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "blame",
@@ -1351,8 +837,7 @@
                          {
                              "command":  "remote-https",
                              "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
+
                                             }
                          },
                          {
@@ -2402,79 +1887,9 @@
                          },
                          {
                              "command":  "citool",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be more verbose",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--quiet",
-                                                    "tooltip":  "be more quiet",
-                                                    "alias":  "-q"
-                                                },
-                                                {
-                                                    "name":  "--receive-pack",
-                                                    "tooltip":  "receive pack program",
-                                                    "argument_type":  "receive-pack"
-                                                },
-                                                {
-                                                    "name":  "--exec",
-                                                    "tooltip":  "receive pack program",
-                                                    "argument_type":  "receive-pack"
-                                                },
-                                                {
-                                                    "name":  "--remote",
-                                                    "tooltip":  "remote name",
-                                                    "argument_type":  "remote"
-                                                },
-                                                {
-                                                    "name":  "--all",
-                                                    "tooltip":  "push all refs"
-                                                },
-                                                {
-                                                    "name":  "--dry-run",
-                                                    "tooltip":  "dry run",
-                                                    "alias":  "-n"
-                                                },
-                                                {
-                                                    "name":  "--mirror",
-                                                    "tooltip":  "mirror all refs"
-                                                },
-                                                {
-                                                    "name":  "--force",
-                                                    "tooltip":  "force updates",
-                                                    "alias":  "-f"
-                                                },
-                                                {
-                                                    "name":  "--progress",
-                                                    "tooltip":  "force progress reporting"
-                                                },
-                                                {
-                                                    "name":  "--thin",
-                                                    "tooltip":  "use thin pack"
-                                                },
-                                                {
-                                                    "name":  "--atomic",
-                                                    "tooltip":  "request atomic transaction on remote side"
-                                                },
-                                                {
-                                                    "name":  "--stateless-rpc",
-                                                    "tooltip":  "use stateless RPC protocol"
-                                                },
-                                                {
-                                                    "name":  "--stdin",
-                                                    "tooltip":  "read refs from stdin"
-                                                },
-                                                {
-                                                    "name":  "--helper-status",
-                                                    "tooltip":  "print status from remote helper"
-                                                },
-                                                {
-                                                    "name":  "--helper-status",
-                                                    "tooltip":  "print status from remote helper"
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "ls-tree",
@@ -2532,57 +1947,9 @@
                          },
                          {
                              "command":  "sh-i18n--envsubst",
-                             "parameters":  [
-                                                {
-                                                    "name":  "-d",
-                                                    "tooltip":  "only show trees"
-                                                },
-                                                {
-                                                    "name":  "-r",
-                                                    "tooltip":  "recurse into subtrees"
-                                                },
-                                                {
-                                                    "name":  "-t",
-                                                    "tooltip":  "show trees when recursing"
-                                                },
-                                                {
-                                                    "name":  "-z",
-                                                    "tooltip":  "terminate entries with NUL byte"
-                                                },
-                                                {
-                                                    "name":  "--long",
-                                                    "tooltip":  "include object size",
-                                                    "alias":  "-l"
-                                                },
-                                                {
-                                                    "name":  "--name-only",
-                                                    "tooltip":  "list only filenames"
-                                                },
-                                                {
-                                                    "name":  "--name-status",
-                                                    "tooltip":  "list only filenames"
-                                                },
-                                                {
-                                                    "name":  "--full-name",
-                                                    "tooltip":  "use full path names"
-                                                },
-                                                {
-                                                    "name":  "--full-tree",
-                                                    "tooltip":  "list entire tree; not just current directory (implies --full-name)"
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
-                                                }
-                                            ]
+                             "parameters":  {
+
+                                            }
                          },
                          {
                              "command":  "clean",
@@ -3267,8 +2634,7 @@
                          {
                              "command":  "credential",
                              "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
+
                                             }
                          },
                          {
@@ -3288,8 +2654,7 @@
                          {
                              "command":  "credential-store",
                              "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
+
                                             }
                          },
                          {
@@ -3309,8 +2674,7 @@
                          {
                              "command":  "credential-wincred",
                              "parameters":  {
-                                                "name":  null,
-                                                "tooltip":  null
+
                                             }
                          },
                          {

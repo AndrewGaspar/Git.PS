@@ -106,6 +106,10 @@ function Get-GitCommand
             {
                 $parameters = [GitCommandParameter[]](Get-GitCommandParameter $_)
             }
+            else
+            {
+                $parameters = @()
+            }
             
             [GitCommand]@{
                 Name = $_
