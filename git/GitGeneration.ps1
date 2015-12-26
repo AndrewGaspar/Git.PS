@@ -47,4 +47,4 @@ if(-not $preGeneration.sub_commands)
 
 $preGeneration.sub_commands = $sub_commands
 
-$preGeneration | ConvertTo-Json -Depth 10 > "Git.Completion.json"
+$preGeneration | ConvertTo-Json -Depth 10 | Out-File "Git.Completion.json" -Encoding utf8
