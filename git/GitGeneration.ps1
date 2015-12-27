@@ -6,10 +6,8 @@ Import-Module "$scriptPath\mod\Git.Reflection.psm1"
 
 $preGeneration = Get-Content $preGenerationLocation | ConvertFrom-Json
 
-$sub_commands = & {
-    $preGeneration.sub_commands
-    
-    Get-GitCommand | ForEach-Object {
+$sub_commands = Get-GitCommand | 
+    ForEach-Object {
         $parameters = $_.Parameters |
             Where-Object {
                 $_
@@ -58,11 +56,28 @@ $sub_commands = & {
         
         $obj
     }
-} | 
-Where-Object {
-    $_
-} |
-Sort-Object -Property command
+    
+$sub_commands = & {
+    $sub_commands
+    
+    foreach($pre_described_command in $preGeneration.sub_commands)
+    {
+        $sub_command = $sub_commands | 
+            Where-Object { $_.command -eq $pre_described_command.command } | 
+            Select-Object -First 1
+        if($sub_command)
+        {
+            foreach($key in $pre_described_command.Keys) 
+            {
+                $sub_command[$key] = $pre_described_command[$key]
+            }
+        }
+        else
+        {
+            $pre_described_command
+        }
+    }
+} | Sort-Object -Property command
 
 if(-not $preGeneration.sub_commands)
 {
