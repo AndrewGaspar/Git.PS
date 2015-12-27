@@ -178,7 +178,8 @@
                                                 },
                                                 {
                                                     "name":  "--resolvemsg",
-                                                    "tooltip":  "...      override error message when patch failure occurs"
+                                                    "tooltip":  "override error message when patch failure occurs",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--continue",
@@ -1010,11 +1011,13 @@
                                                 },
                                                 {
                                                     "name":  "--stage",
-                                                    "tooltip":  "...           copy out the files from named stage"
+                                                    "tooltip":  "copy out the files from named stage",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--stage",
-                                                    "tooltip":  "...           copy out the files from named stage"
+                                                    "tooltip":  "copy out the files from named stage",
+                                                    "argument_type":  "..."
                                                 }
                                             ]
                          },
@@ -2661,23 +2664,27 @@
                                                 },
                                                 {
                                                     "name":  "--port",
-                                                    "tooltip":  "...        the port to bind to",
-                                                    "alias":  "-p"
+                                                    "tooltip":  "the port to bind to",
+                                                    "alias":  "-p",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--httpd",
-                                                    "tooltip":  "...       the command to launch",
-                                                    "alias":  "-d"
+                                                    "tooltip":  "the command to launch",
+                                                    "alias":  "-d",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--browser",
-                                                    "tooltip":  "...     the browser to launch",
-                                                    "alias":  "-b"
+                                                    "tooltip":  "the browser to launch",
+                                                    "alias":  "-b",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--module-path",
-                                                    "tooltip":  "...",
-                                                    "alias":  "-m"
+                                                    "tooltip":  "the module path (only needed for apache2)",
+                                                    "alias":  "-m",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--stop",
@@ -2731,6 +2738,12 @@
                                                 {
                                                     "name":  "--use-mailmap",
                                                     "tooltip":  "Use mail map file"
+                                                },
+                                                {
+                                                    "name":  "--decorate",
+                                                    "tooltip":  "decorate options",
+                                                    "argument_type":  "...",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -3759,15 +3772,18 @@
                                                 },
                                                 {
                                                     "name":  "--author",
-                                                    "tooltip":  "...          author name and email address for patches without any"
+                                                    "tooltip":  "author name and email address for patches without any",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--patches",
-                                                    "tooltip":  "...         path to the quilt series and patches"
+                                                    "tooltip":  "path to the quilt series and patches",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--patches",
-                                                    "tooltip":  "...         path to the quilt series and patches"
+                                                    "tooltip":  "path to the quilt series and patches",
+                                                    "argument_type":  "..."
                                                 }
                                             ]
                          },
@@ -3863,7 +3879,8 @@
                                                 },
                                                 {
                                                     "name":  "--onto",
-                                                    "tooltip":  "...            rebase onto given branch instead of upstream"
+                                                    "tooltip":  "rebase onto given branch instead of upstream",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--preserve-merges",
@@ -3872,8 +3889,9 @@
                                                 },
                                                 {
                                                     "name":  "--strategy",
-                                                    "tooltip":  "...    use the given merge strategy",
-                                                    "alias":  "-s"
+                                                    "tooltip":  "use the given merge strategy",
+                                                    "alias":  "-s",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--no-ff",
@@ -3891,8 +3909,9 @@
                                                 },
                                                 {
                                                     "name":  "--exec",
-                                                    "tooltip":  "...        add exec lines after each commit of the editable list",
-                                                    "alias":  "-x"
+                                                    "tooltip":  "add exec lines after each commit of the editable list",
+                                                    "alias":  "-x",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--keep-empty",
@@ -3906,8 +3925,9 @@
                                                 },
                                                 {
                                                     "name":  "--strategy-option",
-                                                    "tooltip":  "...",
-                                                    "alias":  "-X"
+                                                    "tooltip":  "pass the argument through to the merge strategy",
+                                                    "alias":  "-X",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--stat",
@@ -3944,7 +3964,8 @@
                                                 },
                                                 {
                                                     "name":  "--whitespace",
-                                                    "tooltip":  "...      passed to \u0027git apply\u0027"
+                                                    "tooltip":  "passed to \u0027git apply\u0027",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--ignore-whitespace",
@@ -3952,7 +3973,15 @@
                                                 },
                                                 {
                                                     "name":  "-C",
-                                                    "tooltip":  "...                passed to \u0027git apply\u0027"
+                                                    "tooltip":  "passed to \u0027git apply\u0027",
+                                                    "argument_type":  "..."
+                                                },
+                                                {
+                                                    "name":  "--gpg-sign",
+                                                    "tooltip":  "GPG-sign commits",
+                                                    "alias":  "-S",
+                                                    "argument_type":  "...",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--continue",
@@ -4584,6 +4613,12 @@
                                                     "tooltip":  "Use mail map file"
                                                 },
                                                 {
+                                                    "name":  "--decorate",
+                                                    "tooltip":  "decorate options",
+                                                    "argument_type":  "...",
+                                                    "argument_optional":  true
+                                                },
+                                                {
                                                     "name":  "-L",
                                                     "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
                                                 },
@@ -4893,22 +4928,26 @@
                                                 },
                                                 {
                                                     "name":  "--prefix",
-                                                    "tooltip":  "...      the name of the subdir to split out",
-                                                    "alias":  "-P"
+                                                    "tooltip":  "the name of the subdir to split out",
+                                                    "alias":  "-P",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--message",
-                                                    "tooltip":  "...     use the given message as the commit message for the merge commit",
-                                                    "alias":  "-m"
+                                                    "tooltip":  "use the given message as the commit message for the merge commit",
+                                                    "alias":  "-m",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--annotate",
-                                                    "tooltip":  "...        add a prefix to commit message of new commits"
+                                                    "tooltip":  "add a prefix to commit message of new commits",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--branch",
-                                                    "tooltip":  "...      create a new branch from the split subtree",
-                                                    "alias":  "-b"
+                                                    "tooltip":  "create a new branch from the split subtree",
+                                                    "alias":  "-b",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--ignore-joins",
@@ -4916,7 +4955,8 @@
                                                 },
                                                 {
                                                     "name":  "--onto",
-                                                    "tooltip":  "...            try connecting new tree to an existing one"
+                                                    "tooltip":  "try connecting new tree to an existing one",
+                                                    "argument_type":  "..."
                                                 },
                                                 {
                                                     "name":  "--rejoin",
@@ -5309,6 +5349,12 @@
                                                 {
                                                     "name":  "--use-mailmap",
                                                     "tooltip":  "Use mail map file"
+                                                },
+                                                {
+                                                    "name":  "--decorate",
+                                                    "tooltip":  "decorate options",
+                                                    "argument_type":  "...",
+                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "-L",
