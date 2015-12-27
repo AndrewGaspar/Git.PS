@@ -630,7 +630,123 @@
                                             ]
                          },
                          {
-                             "command":  "branch"
+                             "command":  "branch",
+                             "parameters":  [
+                                                {
+                                                    "name":  "--verbose",
+                                                    "tooltip":  "show hash and subject, give twice for upstream branch\r",
+                                                    "alias":  "-v"
+                                                },
+                                                {
+                                                    "name":  "--quiet",
+                                                    "tooltip":  "suppress informational messages\r",
+                                                    "alias":  "-q"
+                                                },
+                                                {
+                                                    "name":  "--track",
+                                                    "tooltip":  "set up tracking mode (see git-pull(1))\r",
+                                                    "alias":  "-t"
+                                                },
+                                                {
+                                                    "name":  "--set-upstream",
+                                                    "tooltip":  "change upstream info\r"
+                                                },
+                                                {
+                                                    "name":  "--set-upstream-to",
+                                                    "tooltip":  "change the upstream info",
+                                                    "alias":  "-u",
+                                                    "argument_type":  "upstream"
+                                                },
+                                                {
+                                                    "name":  "--unset-upstream",
+                                                    "tooltip":  "Unset the upstream info\r"
+                                                },
+                                                {
+                                                    "name":  "--color",
+                                                    "tooltip":  "use colored output\r",
+                                                    "argument_type":  "when",
+                                                    "argument_optional":  true
+                                                },
+                                                {
+                                                    "name":  "--remotes",
+                                                    "tooltip":  "act on remote-tracking branches\r",
+                                                    "alias":  "-r"
+                                                },
+                                                {
+                                                    "name":  "--contains",
+                                                    "tooltip":  "print only branches that contain the commit\r",
+                                                    "argument_type":  "commit"
+                                                },
+                                                {
+                                                    "name":  "--abbrev",
+                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s\r",
+                                                    "argument_type":  "n",
+                                                    "argument_optional":  true
+                                                },
+                                                {
+                                                    "name":  "--all",
+                                                    "tooltip":  "list both remote-tracking and local branches\r",
+                                                    "alias":  "-a"
+                                                },
+                                                {
+                                                    "name":  "--delete",
+                                                    "tooltip":  "delete fully merged branch\r",
+                                                    "alias":  "-d"
+                                                },
+                                                {
+                                                    "name":  "-D",
+                                                    "tooltip":  "delete branch (even if not merged)\r"
+                                                },
+                                                {
+                                                    "name":  "--move",
+                                                    "tooltip":  "move/rename a branch and its reflog\r",
+                                                    "alias":  "-m"
+                                                },
+                                                {
+                                                    "name":  "-M",
+                                                    "tooltip":  "move/rename a branch, even if target exists\r"
+                                                },
+                                                {
+                                                    "name":  "--list",
+                                                    "tooltip":  "list branch names\r"
+                                                },
+                                                {
+                                                    "name":  "--create-reflog",
+                                                    "tooltip":  "create the branch\u0027s reflog\r",
+                                                    "alias":  "-l"
+                                                },
+                                                {
+                                                    "name":  "--edit-description",
+                                                    "tooltip":  "edit the description for the branch\r"
+                                                },
+                                                {
+                                                    "name":  "--force",
+                                                    "tooltip":  "force creation, move/rename, deletion\r",
+                                                    "alias":  "-f"
+                                                },
+                                                {
+                                                    "name":  "--no-merged",
+                                                    "tooltip":  "print only not merged branches\r",
+                                                    "argument_type":  "commit"
+                                                },
+                                                {
+                                                    "name":  "--merged",
+                                                    "tooltip":  "print only merged branches\r",
+                                                    "argument_type":  "commit"
+                                                },
+                                                {
+                                                    "name":  "--column",
+                                                    "tooltip":  "list branches in columns",
+                                                    "argument_type":  "style",
+                                                    "argument_optional":  true
+                                                },
+                                                {
+                                                    "name":  "--column",
+                                                    "tooltip":  "list branches in columns",
+                                                    "argument_type":  "style",
+                                                    "argument_optional":  true
+                                                }
+                                            ]
                          },
                          {
                              "command":  "bundle"
@@ -3946,7 +4062,24 @@
                              "command":  "status"
                          },
                          {
-                             "command":  "stripspace"
+                             "command":  "stripspace",
+                             "parameters":  [
+                                                {
+                                                    "name":  "--strip-comments",
+                                                    "tooltip":  "skip and remove all lines starting with comment character",
+                                                    "alias":  "-s"
+                                                },
+                                                {
+                                                    "name":  "--comment-lines",
+                                                    "tooltip":  "prepend comment character and blank to each line",
+                                                    "alias":  "-c"
+                                                },
+                                                {
+                                                    "name":  "--comment-lines",
+                                                    "tooltip":  "prepend comment character and blank to each line",
+                                                    "alias":  "-c"
+                                                }
+                                            ]
                          },
                          {
                              "command":  "submodule"
