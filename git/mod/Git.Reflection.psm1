@@ -1,5 +1,5 @@
 
-$commandName = "(?:[\w-\.]+)"
+$commandCapture = "(?<command>[\w-\.]+)"
 
 $shortParameterCapture = "(?<short>-\w)"
 $longParameterCapture = "(?<long>--[\w-]+)"
@@ -9,9 +9,7 @@ $optCapture = "(?<optional_arg>\[=$argumentCapture\])"
 $description = "(?<description>.*)"
 $helpCapture = "$parameterCapture(?:(?: $argumentCapture)|$optCapture)?(?:\s+$description)?"
 
-$usageCapture="^(?:(?:usage)|(?:   or)): git(?: |-)(?<command>\w+) (?<usage>.*)$"
-
-$global:debugHelp = $helpCapture
+$usageCapture="^(?:(?:usage)|(?:   or)): git(?: |-)$commandCapture (?<usage>.*)$"
 
 class GitCommandParameter {
     [string]$ShortParameter
@@ -58,7 +56,6 @@ function Read-GitCommandParameter
     }
     
     end {
-        
         if($lastSeen)
         {
             $lastSeen
@@ -72,8 +69,7 @@ class GitUsage {
     [string]$Usage
 }
 
-function Read-GitUsage {
-    
+function Read-GitCommandUsage {
     process {
         if($_ -match $usageCapture)
         {
@@ -85,39 +81,42 @@ function Read-GitUsage {
     }
 }
 
-function Get-GitUsage {
-    Param([string]$CommandName)
+function Get-GitCommandUsage {
+    Param([string]$Name = "*")
     
-    Get-GitCommandHelpMessage $CommandName | Read-GitUsage
+    Get-GitCommandHelpMessage $Name | Read-GitCommandUsage
 }
 
-function Get-GitCommandHelpMessage
-{
-    Param([string]$CommandName)
+function Get-GitCommandHelpMessage {
+    Param([string]$Name = "*")
     
-    git $CommandName -h 2>&1 | ForEach-Object {
-        if($_ -is [System.Management.Automation.ErrorRecord])
-        {
-            $_.Exception.Message -split "`n";
+    Get-GitCommandName $Name |
+        ForEach-Object {
+            git $_ -h 2>&1
+        } | 
+        ForEach-Object {
+            if($_ -is [System.Management.Automation.ErrorRecord])
+            {
+                $_.Exception.Message -split "`n";
+            }
+            else
+            {
+                $_
+            }
         }
-        else
-        {
-            $_
-        }
-    }
 }
 
-function Get-GitCommandParameter
-{
-    Param([string]$CommandName)
+function Get-GitCommandParameter {
+    Param([string]$Name = "*")
     
-    Get-GitCommandHelpMessage $CommandName | Read-GitCommandParameter
+    Get-GitCommandHelpMessage $Name | Read-GitCommandParameter
 }
 
 class GitCommand
 {
     [string]$Name
     [GitCommandParameter[]]$Parameters
+    [GitUsage[]]$Usage
 }
 
 $nonHelpfulCommands = @("gui*", "citool", "remote-*", "sh-i18n--envsubst", "credential*")
@@ -128,13 +127,13 @@ function IsCommandNotHelpful {
     return !!($nonHelpfulCommands | Where-Object { $command -like $_ })
 }
 
-function Get-GitCommand
+function Get-GitCommandName
 {
     Param([string]$Name = "*")
     
     git help -a 2>&1 | 
         ForEach-Object {
-            if($_ -match "^  (?<first>$commandName)\s+(?<second>$commandName)(?:\s+(?<third>$commandName))?\s*$")
+            if($_ -match "^  (?<first>$commandCapture)\s+(?<second>$commandCapture)(?:\s+(?<third>$commandCapture))?\s*$")
             {
                 $Matches["first"]
                 $Matches["second"]
@@ -143,27 +142,52 @@ function Get-GitCommand
         } |
         Where-Object {
             $_ -like $Name
-        } |
+        } | Sort-Object
+}
+
+function Get-GitCommand
+{
+    Param([string]$Name = "*")
+    
+    Get-GitCommandName $Name |
         ForEach-Object {
-            if(!(IsCommandNotHelpful $_))
+            if(IsCommandNotHelpful $_)
             {
-                $parameters = [GitCommandParameter[]](Get-GitCommandParameter $_)
+                $parameters = @()
+                $usage = @()
             }
             else
             {
-                $parameters = @()
+                $helpMessage = Get-GitCommandHelpMessage $_
+                $parameters = [GitCommandParameter[]]($helpMessage | Read-GitCommandParameter)
+                $usage = [GitUsage[]]($helpMessage | Read-GitCommandUsage)
             }
             
             [GitCommand]@{
                 Name = $_
                 Parameters = $parameters
+                Usage = $usage
             }
         }
 }
 
-function CompleteGitCompletionOptions
-{
-    Param([PSObject]$completionOptions)
-    
-    
+function CompleteGitCommand {
+    param($commandName,
+        $parameterName,
+        $wordToComplete,
+        $commandAst,
+        $fakeBoundParameter)
+        
+    Get-GitCommandName "$wordToComplete*" |
+        ForEach-Object {
+            New-CompletionResult $_ "Command: $_"
+        }
 }
+
+Register-ArgumentCompleter `
+    -CommandName @("Get-GitCommand", "Get-GitCommandName", "Get-GitCommandParameter", "Get-GitCommandHelpMessage", "Get-GitCommandUsage") `
+    -ParameterName Name `
+    -Description "Provides command completion for git reflection commands" `
+    -ScriptBlock $function:CompleteGitCommand
+
+Set-Alias gith Get-GitCommandHelpMessage
