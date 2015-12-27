@@ -1,5 +1,6 @@
 
 $commandName = "(?:[\w-\.]+)"
+
 $shortParameterCapture = "(?<short>-\w)"
 $longParameterCapture = "(?<long>--[\w-]+)"
 $parameterCapture = "(?:(?:$shortParameterCapture(?:, $longParameterCapture)?)|$longParameterCapture)"
@@ -7,6 +8,8 @@ $argumentCapture = "(?:(?:<(?<argument>[\w-]+)>)|(?<argument>\.\.\.))"
 $optCapture = "(?<optional_arg>\[=$argumentCapture\])"
 $description = "(?<description>.*)"
 $helpCapture = "$parameterCapture(?:(?: $argumentCapture)|$optCapture)?(?:\s+$description)?"
+
+$usageCapture="^(?:(?:usage)|(?:   or)): git(?: |-)(?<command>\w+) (?<usage>.*)$"
 
 $global:debugHelp = $helpCapture
 
@@ -62,6 +65,30 @@ function Read-GitCommandParameter
         }
     }
     
+}
+
+class GitUsage {
+    [string]$CommandName
+    [string]$Usage
+}
+
+function Read-GitUsage {
+    
+    process {
+        if($_ -match $usageCapture)
+        {
+            New-Object GitUsage -Property @{
+                CommandName = $Matches["command"]
+                Usage = $Matches["usage"]
+            }
+        }
+    }
+}
+
+function Get-GitUsage {
+    Param([string]$CommandName)
+    
+    Get-GitCommandHelpMessage $CommandName | Read-GitUsage
 }
 
 function Get-GitCommandHelpMessage
