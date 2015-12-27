@@ -14,6 +14,26 @@ class TabCompletionDescription {
 
 $Script:CompletionRegistrations = @{}
 
+function PoshNativeCompleteCommand {
+    Param(
+        $wordToComplete,
+        $commandAst,
+        $cursor,
+        $depth,
+        [TabCompletionDescription]$commandDescription
+    )
+    
+    foreach($subCommand in $commandDescription.SubCommands)
+    {
+        [System.Management.Automation.CompletionResult]::new(
+            $subCommand.Command,
+            $subCommand.Command,
+            "Command",
+            $subCommand.Command
+        )
+    }
+}
+
 function Register-NativeTabCompletion {
     Param(
         [Parameter(Mandatory=$true, ValueFromPipeline=$True)]
@@ -33,15 +53,7 @@ function Register-NativeTabCompletion {
                 
             $commandDescription = Get-NativeTabCompletion $commandAst.GetCommandName()
             
-            foreach($subCommand in $commandDescription.SubCommands)
-            {
-                [System.Management.Automation.CompletionResult]::new(
-                    $subCommand.Command,
-                    $subCommand.Command,
-                    "Command",
-                    $subCommand.Command
-                )
-            }
+            PoshNativeCompleteCommand $wordToComplete $commandAst $cursor 1 $commandDescription
         }
 }
 
@@ -60,9 +72,11 @@ function ParseCompletionDescription {
         $completionDescription.Command = $_.command
         if($_.sub_commands)
         {
-            $completionDescription.SubCommands = $_.sub_commands | ForEach-Object {
-                ParseCompletionDescription $_
-            }
+            $completionDescription.SubCommands = $_.sub_commands |
+                Sort-Object -Property Command | 
+                ForEach-Object {
+                    ParseCompletionDescription $_
+                }
         }
         
         if($_.parameters)

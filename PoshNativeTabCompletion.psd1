@@ -66,7 +66,7 @@ Copyright = '(c) 2015 Andrew Gaspar. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = @('*-NativeTabCompletion')
+FunctionsToExport = @('*-NativeTabCompletion', 'PoshNativeCompleteCommand')
 
 # Cmdlets to export from this module
 CmdletsToExport = '*'
