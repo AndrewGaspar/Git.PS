@@ -84,7 +84,7 @@ function Read-GitCommandUsage {
             
             New-Object GitUsage -Property @{
                 CommandName = $subCommands[0]
-                Usage = $Matches["usage"]
+                Usage = "$(($subCommands | Select-Object -Skip 1) -join " ") $($Matches["usage"])".Trim()
             }
         }
     }
@@ -159,6 +159,20 @@ function Get-GitCommandSubCommands {
             if($_ -eq "bisect") {
                 Get-GitBisectCommandSubCommands
             }
+            else
+            {
+                Get-GitCommandUsage $_ | ForEach-Object {
+                    if($_.Usage -match "^$commandCapture") {
+                        $command = $Matches["command"]
+                        
+                        New-Object GitSubCommands -Property @{
+                            CommandName = $_.CommandName
+                            SubCommands = $command
+                            Usage = $_.Usage.Substring($command.Length).Trim()
+                        }
+                    }
+                }
+            }
         }
 }
 
@@ -192,6 +206,38 @@ function Get-GitCommandHelpMessage {
         }
 }
 
+class GitAlias {
+    [string]$CommandName
+    [string]$Alias
+}
+
+function Read-GitCommandAliased {
+    Param([string]$Name)
+    
+    $input | Read-GitCommandUsage | ForEach-Object {
+        if($_.CommandName -ne $Name) {
+            New-Object GitAlias -Property @{
+                CommandName = $_.CommandName
+                Alias = $Name
+            }
+        }
+    } | Select-Object -Unique
+}
+
+function Get-GitCommandAliased {
+    Param([string]$Name = "*")
+    
+    Get-GitCommandName $Name | ForEach-Object {
+        Get-GitCommandHelpMessage $_ | Read-GitCommandAliased $_
+    }
+}
+
+function Get-GitCommandAlias {
+    Param([string]$Name = "*")
+    
+    Get-GitCommandAliased * | Where-Object { $_.CommandName -match $Name }
+}
+
 class GitCommand
 {
     [string]$Name
@@ -203,6 +249,10 @@ class GitCommand
 function Get-GitCommandName
 {
     Param([string]$Name = "*")
+    
+    if(!$Name.Contains('*')) {
+        return $Name
+    }
     
     git help -a 2>&1 | 
         ForEach-Object {
@@ -260,7 +310,7 @@ function CompleteGitCommand {
 }
 
 Register-ArgumentCompleter `
-    -CommandName @("Get-GitCommand", "Get-GitCommandName", "Get-GitCommandParameter", "Get-GitCommandHelpMessage", "Get-GitCommandUsage", "Get-GitCommandSubCommands") `
+    -CommandName @("Get-GitCommand", "Get-GitCommandName", "Get-GitCommandParameter", "Get-GitCommandHelpMessage", "Get-GitCommandUsage", "Get-GitCommandSubCommands", "Get-GitCommandAliased", "Get-GitCommandAlias") `
     -ParameterName Name `
     -Description "Provides command completion for git reflection commands" `
     -ScriptBlock $function:CompleteGitCommand
