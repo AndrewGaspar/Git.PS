@@ -81,6 +81,10 @@ function Read-GitCommandUsage {
         if($_ -match $commandUsageCapture)
         {
             $subCommands = $Matches["sub_commands"].Trim().Split(' ')
+
+            if($subCommands[0].StartsWith('-')) {
+                $subCommands[0] = $subCommands.Substring(1)
+            }
             
             New-Object GitUsage -Property @{
                 CommandName = $subCommands[0]
@@ -211,8 +215,17 @@ class GitAlias {
     [string]$Alias
 }
 
+$ignoreAliasCommands = @("log", "show")
+
 function Read-GitCommandAliased {
     Param([string]$Name)
+    
+    if($ignoreAliasCommands | Where-Object {
+        $Name -match $_
+    })
+    {
+        return;
+    }
     
     $input | Read-GitCommandUsage | ForEach-Object {
         if($_.CommandName -ne $Name) {
@@ -244,6 +257,7 @@ class GitCommand
     [GitCommandParameter[]]$Parameters
     [GitUsage[]]$Usage
     [GitSubCommands[]]$SubCommands
+    [GitAlias[]]$AliasedTo
 }
 
 function Get-GitCommandName
@@ -274,17 +288,16 @@ function Get-GitCommand
     
     Get-GitCommandName $Name |
         ForEach-Object {
-            if(IsCommandNotHelpful $_)
-            {
+            if(IsCommandNotHelpful $_) {
                 $parameters = @()
                 $usage = @()
-            }
-            else
-            {
+            } else {
                 $helpMessage = Get-GitCommandHelpMessage $_
+                
                 $parameters = [GitCommandParameter[]]($helpMessage | Read-GitCommandParameter)
                 $usage = [GitUsage[]]($helpMessage | Read-GitCommandUsage)
                 $subCommands = [GitSubCommands[]](Get-GitCommandSubCommands $_)
+                $aliasTo = [GitAlias[]]($helpMessage | Read-GitCommandAliased $_)
             }
             
             [GitCommand]@{
@@ -292,6 +305,7 @@ function Get-GitCommand
                 Parameters = $parameters
                 Usage = $usage
                 SubCommands = $subCommands
+                AliasedTo = $aliasTo
             }
         }
 }

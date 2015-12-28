@@ -217,96 +217,7 @@
                          },
                          {
                              "command":  "annotate",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--incremental",
-                                                    "tooltip":  "Show blame entries as we find them, incrementally"
-                                                },
-                                                {
-                                                    "name":  "-b",
-                                                    "tooltip":  "Show blank SHA-1 for boundary commits (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "--root",
-                                                    "tooltip":  "Do not treat root commits as boundaries (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "--show-stats",
-                                                    "tooltip":  "Show work cost statistics"
-                                                },
-                                                {
-                                                    "name":  "--score-debug",
-                                                    "tooltip":  "Show output score for blame entries"
-                                                },
-                                                {
-                                                    "name":  "--show-name",
-                                                    "tooltip":  "Show original filename (Default: auto)",
-                                                    "alias":  "-f"
-                                                },
-                                                {
-                                                    "name":  "--show-number",
-                                                    "tooltip":  "Show original linenumber (Default: off)",
-                                                    "alias":  "-n"
-                                                },
-                                                {
-                                                    "name":  "--porcelain",
-                                                    "tooltip":  "Show in a format designed for machine consumption",
-                                                    "alias":  "-p"
-                                                },
-                                                {
-                                                    "name":  "--line-porcelain",
-                                                    "tooltip":  "Show porcelain format with per-line commit information"
-                                                },
-                                                {
-                                                    "name":  "-c",
-                                                    "tooltip":  "Use the same output mode as git-annotate (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "-t",
-                                                    "tooltip":  "Show raw timestamp (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "-l",
-                                                    "tooltip":  "Show long commit SHA1 (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "-s",
-                                                    "tooltip":  "Suppress author name and timestamp (Default: off)"
-                                                },
-                                                {
-                                                    "name":  "--show-email",
-                                                    "tooltip":  "Show author email instead of name (Default: off)",
-                                                    "alias":  "-e"
-                                                },
-                                                {
-                                                    "name":  "-w",
-                                                    "tooltip":  "Ignore whitespace differences"
-                                                },
-                                                {
-                                                    "name":  "--minimal",
-                                                    "tooltip":  "Spend extra cycles to find better match"
-                                                },
-                                                {
-                                                    "name":  "-S",
-                                                    "tooltip":  "Use revisions from \u003cfile\u003e instead of calling git-rev-list",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--contents",
-                                                    "tooltip":  "Use \u003cfile\u003e\u0027s contents as the final image",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "\u003cn,m\u003e              Process only line range n,m, counting from 1"
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
-                                                }
-                                            ]
+                             "aliased_to":  "blame"
                          },
                          {
                              "command":  "apply",
@@ -2060,57 +1971,7 @@
                          },
                          {
                              "command":  "fsck-objects",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--unreachable",
-                                                    "tooltip":  "show unreachable objects"
-                                                },
-                                                {
-                                                    "name":  "--dangling",
-                                                    "tooltip":  "show dangling objects"
-                                                },
-                                                {
-                                                    "name":  "--tags",
-                                                    "tooltip":  "report tags"
-                                                },
-                                                {
-                                                    "name":  "--root",
-                                                    "tooltip":  "report root nodes"
-                                                },
-                                                {
-                                                    "name":  "--cache",
-                                                    "tooltip":  "make index objects head nodes"
-                                                },
-                                                {
-                                                    "name":  "--reflogs",
-                                                    "tooltip":  "make reflogs head nodes (default)"
-                                                },
-                                                {
-                                                    "name":  "--full",
-                                                    "tooltip":  "also consider packs and alternate objects"
-                                                },
-                                                {
-                                                    "name":  "--connectivity-only",
-                                                    "tooltip":  "check only connectivity"
-                                                },
-                                                {
-                                                    "name":  "--strict",
-                                                    "tooltip":  "enable more strict checking"
-                                                },
-                                                {
-                                                    "name":  "--lost-found",
-                                                    "tooltip":  "write dangling objects in .git/lost-found"
-                                                },
-                                                {
-                                                    "name":  "--progress",
-                                                    "tooltip":  "show progress"
-                                                }
-                                            ]
+                             "aliased_to":  "fsck"
                          },
                          {
                              "command":  "gc",
@@ -2313,12 +2174,10 @@
                                                     "tooltip":  "combine patterns specified with -e"
                                                 },
                                                 {
-                                                    "name":  "--or",
-                                                    "tooltip":  ""
+                                                    "name":  "--or"
                                                 },
                                                 {
-                                                    "name":  "--not",
-                                                    "tooltip":  ""
+                                                    "name":  "--not"
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -2482,33 +2341,7 @@
                          },
                          {
                              "command":  "init-db",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--template",
-                                                    "tooltip":  "directory from which templates will be used",
-                                                    "argument_type":  "template-directory"
-                                                },
-                                                {
-                                                    "name":  "--bare",
-                                                    "tooltip":  "create a bare repository"
-                                                },
-                                                {
-                                                    "name":  "--shared",
-                                                    "tooltip":  "specify that the git repository is to be shared amongst several users",
-                                                    "argument_type":  "permissions",
-                                                    "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--quiet",
-                                                    "tooltip":  "be quiet",
-                                                    "alias":  "-q"
-                                                },
-                                                {
-                                                    "name":  "--separate-git-dir",
-                                                    "tooltip":  "separate git dir from working tree",
-                                                    "argument_type":  "gitdir"
-                                                }
-                                            ]
+                             "aliased_to":  "init"
                          },
                          {
                              "command":  "instaweb",
@@ -2950,68 +2783,7 @@
                          },
                          {
                              "command":  "merge-resolve",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--index-output",
-                                                    "tooltip":  "write resulting index to \u003cfile\u003e",
-                                                    "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--empty",
-                                                    "tooltip":  "only empty the index"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "-m",
-                                                    "tooltip":  "perform a merge in addition to a read"
-                                                },
-                                                {
-                                                    "name":  "--trivial",
-                                                    "tooltip":  "3-way merge if no file level merging required"
-                                                },
-                                                {
-                                                    "name":  "--aggressive",
-                                                    "tooltip":  "3-way merge in presence of adds and removes"
-                                                },
-                                                {
-                                                    "name":  "--reset",
-                                                    "tooltip":  "same as -m, but discard unmerged entries"
-                                                },
-                                                {
-                                                    "name":  "--prefix",
-                                                    "tooltip":  "\u003csubdirectory\u003e/"
-                                                },
-                                                {
-                                                    "name":  "-u",
-                                                    "tooltip":  "update working tree with merge result"
-                                                },
-                                                {
-                                                    "name":  "--exclude-per-directory",
-                                                    "tooltip":  "allow explicitly ignored files to be overwritten",
-                                                    "argument_type":  "gitignore"
-                                                },
-                                                {
-                                                    "name":  "-i",
-                                                    "tooltip":  "don\u0027t check the working tree after merging"
-                                                },
-                                                {
-                                                    "name":  "--dry-run",
-                                                    "tooltip":  "don\u0027t update the index or the work tree",
-                                                    "alias":  "-n"
-                                                },
-                                                {
-                                                    "name":  "--no-sparse-checkout",
-                                                    "tooltip":  "skip applying sparse checkout filter"
-                                                },
-                                                {
-                                                    "name":  "--debug-unpack",
-                                                    "tooltip":  "debug unpack-trees"
-                                                }
-                                            ]
+                             "aliased_to":  "read-tree"
                          },
                          {
                              "command":  "merge-subtree"
@@ -4032,104 +3804,81 @@
                              "command":  "rev-list",
                              "parameters":  [
                                                 {
-                                                    "name":  "--sparse",
-                                                    "tooltip":  ""
+                                                    "name":  "--sparse"
                                                 },
                                                 {
-                                                    "name":  "--no-merges",
-                                                    "tooltip":  ""
+                                                    "name":  "--no-merges"
                                                 },
                                                 {
-                                                    "name":  "--no-min-parents",
-                                                    "tooltip":  ""
+                                                    "name":  "--no-min-parents"
                                                 },
                                                 {
-                                                    "name":  "--no-max-parents",
-                                                    "tooltip":  ""
+                                                    "name":  "--no-max-parents"
                                                 },
                                                 {
-                                                    "name":  "--remove-empty",
-                                                    "tooltip":  ""
+                                                    "name":  "--remove-empty"
                                                 },
                                                 {
-                                                    "name":  "--all",
-                                                    "tooltip":  ""
+                                                    "name":  "--all"
                                                 },
                                                 {
-                                                    "name":  "--branches",
-                                                    "tooltip":  ""
+                                                    "name":  "--branches"
                                                 },
                                                 {
-                                                    "name":  "--tags",
-                                                    "tooltip":  ""
+                                                    "name":  "--tags"
                                                 },
                                                 {
-                                                    "name":  "--remotes",
-                                                    "tooltip":  ""
+                                                    "name":  "--remotes"
                                                 },
                                                 {
-                                                    "name":  "--stdin",
-                                                    "tooltip":  ""
+                                                    "name":  "--stdin"
                                                 },
                                                 {
-                                                    "name":  "--quiet",
-                                                    "tooltip":  ""
+                                                    "name":  "--quiet"
                                                 },
                                                 {
-                                                    "name":  "--topo-order",
-                                                    "tooltip":  ""
+                                                    "name":  "--topo-order"
                                                 },
                                                 {
-                                                    "name":  "--date-order",
-                                                    "tooltip":  ""
+                                                    "name":  "--date-order"
                                                 },
                                                 {
-                                                    "name":  "--reverse",
-                                                    "tooltip":  ""
+                                                    "name":  "--reverse"
                                                 },
                                                 {
-                                                    "name":  "--parents",
-                                                    "tooltip":  ""
+                                                    "name":  "--parents"
                                                 },
                                                 {
-                                                    "name":  "--children",
-                                                    "tooltip":  ""
+                                                    "name":  "--children"
                                                 },
                                                 {
                                                     "name":  "--objects",
                                                     "tooltip":  "| --objects-edge"
                                                 },
                                                 {
-                                                    "name":  "--unpacked",
-                                                    "tooltip":  ""
+                                                    "name":  "--unpacked"
                                                 },
                                                 {
                                                     "name":  "--header",
                                                     "tooltip":  "| --pretty"
                                                 },
                                                 {
-                                                    "name":  "--abbrev-commit",
-                                                    "tooltip":  ""
+                                                    "name":  "--abbrev-commit"
                                                 },
                                                 {
-                                                    "name":  "--left-right",
-                                                    "tooltip":  ""
+                                                    "name":  "--left-right"
                                                 },
                                                 {
-                                                    "name":  "--count",
-                                                    "tooltip":  ""
+                                                    "name":  "--count"
                                                 },
                                                 {
-                                                    "name":  "--bisect",
-                                                    "tooltip":  ""
+                                                    "name":  "--bisect"
                                                 },
                                                 {
-                                                    "name":  "--bisect-vars",
-                                                    "tooltip":  ""
+                                                    "name":  "--bisect-vars"
                                                 },
                                                 {
-                                                    "name":  "--bisect-all",
-                                                    "tooltip":  ""
+                                                    "name":  "--bisect-all"
                                                 }
                                             ]
                          },
@@ -4526,69 +4275,7 @@
                          },
                          {
                              "command":  "stage",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--dry-run",
-                                                    "tooltip":  "dry run",
-                                                    "alias":  "-n"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--interactive",
-                                                    "tooltip":  "interactive picking",
-                                                    "alias":  "-i"
-                                                },
-                                                {
-                                                    "name":  "--patch",
-                                                    "tooltip":  "select hunks interactively",
-                                                    "alias":  "-p"
-                                                },
-                                                {
-                                                    "name":  "--edit",
-                                                    "tooltip":  "edit current diff and apply",
-                                                    "alias":  "-e"
-                                                },
-                                                {
-                                                    "name":  "--force",
-                                                    "tooltip":  "allow adding otherwise ignored files",
-                                                    "alias":  "-f"
-                                                },
-                                                {
-                                                    "name":  "--update",
-                                                    "tooltip":  "update tracked files",
-                                                    "alias":  "-u"
-                                                },
-                                                {
-                                                    "name":  "--intent-to-add",
-                                                    "tooltip":  "record only the fact that the path will be added later",
-                                                    "alias":  "-N"
-                                                },
-                                                {
-                                                    "name":  "--all",
-                                                    "tooltip":  "add changes from all tracked and untracked files",
-                                                    "alias":  "-A"
-                                                },
-                                                {
-                                                    "name":  "--ignore-removal",
-                                                    "tooltip":  "ignore paths removed in the working tree (same as --no-all)"
-                                                },
-                                                {
-                                                    "name":  "--refresh",
-                                                    "tooltip":  "don\u0027t add, only refresh the index"
-                                                },
-                                                {
-                                                    "name":  "--ignore-errors",
-                                                    "tooltip":  "just skip files which cannot be added because of errors"
-                                                },
-                                                {
-                                                    "name":  "--ignore-missing",
-                                                    "tooltip":  "check if - even missing - files are ignored in dry run"
-                                                }
-                                            ]
+                             "aliased_to":  "add"
                          },
                          {
                              "command":  "stash"
@@ -5055,31 +4742,7 @@
                          },
                          {
                              "command":  "whatchanged",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--quiet",
-                                                    "tooltip":  "suppress diff output",
-                                                    "alias":  "-q"
-                                                },
-                                                {
-                                                    "name":  "--source",
-                                                    "tooltip":  "show source"
-                                                },
-                                                {
-                                                    "name":  "--use-mailmap",
-                                                    "tooltip":  "Use mail map file"
-                                                },
-                                                {
-                                                    "name":  "--decorate",
-                                                    "tooltip":  "decorate options",
-                                                    "argument_type":  "...",
-                                                    "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
-                                                }
-                                            ]
+                             "aliased_to":  "log"
                          },
                          {
                              "command":  "worktree"
