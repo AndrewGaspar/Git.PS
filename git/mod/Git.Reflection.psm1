@@ -309,10 +309,20 @@ function CompleteGitCommand {
         }
 }
 
-Register-ArgumentCompleter `
-    -CommandName @("Get-GitCommand", "Get-GitCommandName", "Get-GitCommandParameter", "Get-GitCommandHelpMessage", "Get-GitCommandUsage", "Get-GitCommandSubCommands", "Get-GitCommandAliased", "Get-GitCommandAlias") `
-    -ParameterName Name `
-    -Description "Provides command completion for git reflection commands" `
-    -ScriptBlock $function:CompleteGitCommand
+$completionCommands = Get-Command "Get-GitCommand*"
+
+if(Get-Module TabExpansionPlusPlus)
+{
+    TabExpansionPlusPlus\Register-ArgumentCompleter `
+        -CommandName $completionCommands `
+        -ParameterName Name `
+        -Description "Provides command completion for git reflection commands" `
+        -ScriptBlock $function:CompleteGitCommand
+} else {
+    Microsoft.PowerShell.Core\Register-ArgumentCompleter `
+        -CommandName $completionCommands `
+        -ParameterName Name `
+        -ScriptBlock $function:CompleteGitCommand
+}
 
 Set-Alias gith Get-GitCommandHelpMessage
