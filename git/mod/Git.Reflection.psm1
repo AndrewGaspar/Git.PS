@@ -1,6 +1,14 @@
 
 $commandCapture = "(?<command>\w[\w-\.]*)"
 
+function CommandGroupCapture([string]$captureNumber)
+{
+    "(?:(?<first_command>$commandCapture)(?<rest_commands>(\|$commandCapture)$captureNumber))"
+}
+
+$commandGroupCaptureAtLeastTwo = CommandGroupCapture "+"
+$commandGroupCapture = CommandGroupCapture "*"
+
 $shortParameterCapture = "(?<short>-\w)"
 $longParameterCapture = "(?<long>--[\w-]+)"
 $parameterCapture = "(?:(?:$shortParameterCapture(?:, $longParameterCapture)?)|$longParameterCapture)"
@@ -9,9 +17,11 @@ $optCapture = "(?<optional_arg>\[=$argumentCapture\])"
 $description = "(?<description>.*)"
 $helpCapture = "$parameterCapture(?:(?: $argumentCapture)|$optCapture)?(?:\s+$description)?"
 
-$usageCapture = "(?<git>git)(?<sub_commands>(?:(?: |-)$commandCapture)+)(?: (?<usage>.*))?"
+$usageCapture = "(?<usage>.*)"
 
-$commandUsageCapture="^(?:(?:usage)|(?:   or)): $usageCapture$"
+$gitUsageCapture = "(?<git>git)(?<sub_commands>(?:(?: |-)$commandCapture)+)(?: $usageCapture)?"
+
+$gitCommandUsageCapture="^(?:(?:usage)|(?:   or)): $gitUsageCapture$"
 
 class GitCommandParameter {
     [string]$ShortParameter
@@ -72,13 +82,13 @@ function Get-GitCommandParameter {
 }
 
 class GitUsage {
-    [string]$CommandName
+    [string]$Name
     [string]$Usage
 }
 
 function Read-GitCommandUsage {
     process {
-        if($_ -match $commandUsageCapture)
+        if($_ -match $gitCommandUsageCapture)
         {
             $subCommands = $Matches["sub_commands"].Trim().Split(' ')
 
@@ -87,7 +97,7 @@ function Read-GitCommandUsage {
             }
             
             New-Object GitUsage -Property @{
-                CommandName = $subCommands[0]
+                Name = $subCommands[0]
                 Usage = "$(($subCommands | Select-Object -Skip 1) -join " ") $($Matches["usage"])".Trim()
             }
         }
@@ -100,10 +110,13 @@ function Get-GitCommandUsage {
     Get-GitCommandHelpMessage $Name | Read-GitCommandUsage
 }
 
-class GitSubCommands {
-    [string]$CommandName
-    [string[]]$SubCommands
-    [string]$Usage
+class GitCommand
+{
+    [string]$Name
+    [GitCommandParameter[]]$Parameters
+    [GitUsage[]]$Usage
+    [GitCommand[]]$SubCommands
+    [GitAlias[]]$AliasedTo
     [string]$Description
 }
 
@@ -114,7 +127,7 @@ function Read-GitBisectCommandSubCommands {
     }
     
     process {
-        if($_ -match "^$usageCapture$")
+        if($_ -match "^$gitUsageCapture$")
         {
             if($lastSubcommand) {
                 $lastSubcommand
@@ -129,14 +142,22 @@ function Read-GitBisectCommandSubCommands {
                 continue;
             }
             
-            $lastSubcommand = New-Object GitSubCommands -Property @{
-                CommandName = $sub_commands[0]
-                SubCommands = $sub_commands | Select-Object -Skip 1
+            $name = $sub_commands[1]
+            
+            $lastSubcommand = New-Object GitCommand -Property @{
+                Name = $name
+            }
+            
+            if($Matches["usage"])
+            {
+                $lastSubcommand.Usage = New-Object GitUsage -Property @{
+                    Name = $name
+                    Usage = "$(($sub_commands | Select-Object -Skip 2) -join " ") $($Matches["usage"])"
+                }
             }
             
             $readDescription = $true
-        } elseif ($readDescription)
-        {
+        } elseif ($readDescription) {
             $lastSubcommand.Description = $_.Trim()
             $readDescription = $false
         }
@@ -155,6 +176,110 @@ function Get-GitBisectCommandSubCommands {
     Get-GitCommandHelpMessage "bisect" | Read-GitBisectCommandSubCommands
 }
 
+class GitSubCommandName {
+    [string]$Name
+    [string]$SubCommandName
+}
+
+function Read-GitCommandSubCommandName {
+    $input | Read-GitCommandUsage |
+        ForEach-Object {
+            & {
+                if($_.Usage -match "^$commandCapture") {
+                    New-Object GitSubCommandName -Property @{
+                        Name = $_.Name
+                        SubCommandName = $Matches["command"]
+                    }
+                } elseif ($_.Usage -match "^\[$commandGroupCaptureAtLeastTwo\]") {
+                    do {
+                        New-Object GitSubCommandName -Property @{
+                            Name = $_.Name
+                            SubCommandName = $Matches["first_command"]
+                        }
+                        
+                        if($Matches["rest_commands"])
+                        {
+                            $rest_commands = $Matches["rest_commands"].Substring(1)
+                        } else {
+                            break
+                        }
+                    } while($rest_commands -match "$commandGroupCapture")
+                }
+            }
+        } | 
+        Group-Object -Property Name |
+        ForEach-Object {
+            $_.Group | 
+                Sort-Object SubCommandName -Unique
+        }
+}
+
+function Get-GitCommandSubCommandName {
+    Param(
+        [string]$Name = "*",
+        [string]$SubCommandName = "*")
+        
+    Get-GitCommandName $Name |
+        ForEach-Object {
+            Get-GitCommandHelpMessage $_ | 
+                Read-GitCommandSubCommandName |
+                Where-Object { 
+                    $_.SubCommandName -like $SubCommandName 
+                }
+        }
+}
+
+class GitSubCommandUsage {
+    [string]$Name
+    [string]$SubCommandName
+    [string]$Usage
+}
+
+function Read-GitCommandSubCommandUsage {
+    Param(
+        [string]$SubCommandName = "*")
+    
+    # make copy of input
+    $in = $input | ForEach-Object { $_ }
+
+    $subCommandNames = $in | Read-GitCommandSubCommandName | Where-Object { $_.SubCommandName -like $SubCommandName }
+    
+    $subCommandNames | ForEach-Object {
+        $self = $_
+        
+        $in | ForEach-Object {
+            if($_ -match "git $($self.Name) $($self.SubCommandName)( $usageCapture)?") {
+                $obj = New-Object GitSubCommandUsage -Property @{
+                    Name = $self.Name
+                    SubCommandName = $self.SubCommandName
+                    Usage = $Matches["usage"]
+                }
+
+                if($Matches["usage"]) {
+                    $obj.Usage = $Matches["usage"].Trim()
+                }
+
+                $obj
+            }
+        }
+    }
+}
+
+function Get-GitCommandSubCommandUsage {
+    Param(
+        [string]$Name="*",
+        [string]$SubCommandName = "*")
+    
+    Get-GitCommandName $Name |
+        ForEach-Object {
+            Get-GitCommandHelpMessage $_ | 
+                Read-GitCommandSubCommandUsage |
+                Where-Object { 
+                    $_.SubCommandName -like $SubCommandName 
+                }
+        }
+}
+
 function Get-GitCommandSubCommands {
     Param([string]$Name="*")
     
@@ -167,12 +292,21 @@ function Get-GitCommandSubCommands {
             {
                 Get-GitCommandUsage $_ | ForEach-Object {
                     if($_.Usage -match "^$commandCapture") {
-                        $command = $Matches["command"]
+                        $sub_commands = $Matches["sub_command"]
                         
-                        New-Object GitSubCommands -Property @{
-                            CommandName = $_.CommandName
-                            SubCommands = $command
-                            Usage = $_.Usage.Substring($command.Length).Trim()
+                        if($sub_commands.Count -lt 2)
+                        {
+                            continue;
+                        }
+                        
+                        $name = $sub_commands[1]
+                        
+                        New-Object GitCommand -Property @{
+                            Name = $name
+                            Usage = New-Object GitUsage -Property @{
+                                Name = $name
+                                Usage = "$(($sub_commands | Select-Object -Skip 2) -join " ") $($Matches["usage"])"
+                            }
                         }
                     }
                 }
@@ -211,7 +345,7 @@ function Get-GitCommandHelpMessage {
 }
 
 class GitAlias {
-    [string]$CommandName
+    [string]$Name
     [string]$Alias
 }
 
@@ -228,13 +362,13 @@ function Read-GitCommandAliased {
     }
     
     $input | Read-GitCommandUsage | ForEach-Object {
-        if($_.CommandName -ne $Name) {
+        if($_.Name -ne $Name) {
             New-Object GitAlias -Property @{
-                CommandName = $_.CommandName
+                Name = $_.Name
                 Alias = $Name
             }
         }
-    } | Select-Object -Unique
+    }
 }
 
 function Get-GitCommandAliased {
@@ -248,16 +382,7 @@ function Get-GitCommandAliased {
 function Get-GitCommandAlias {
     Param([string]$Name = "*")
     
-    Get-GitCommandAliased * | Where-Object { $_.CommandName -match $Name }
-}
-
-class GitCommand
-{
-    [string]$Name
-    [GitCommandParameter[]]$Parameters
-    [GitUsage[]]$Usage
-    [GitSubCommands[]]$SubCommands
-    [GitAlias[]]$AliasedTo
+    Get-GitCommandAliased * | Where-Object { $_.Name -match $Name }
 }
 
 function Get-GitCommandName
@@ -296,7 +421,7 @@ function Get-GitCommand
                 
                 $parameters = [GitCommandParameter[]]($helpMessage | Read-GitCommandParameter)
                 $usage = [GitUsage[]]($helpMessage | Read-GitCommandUsage)
-                $subCommands = [GitSubCommands[]](Get-GitCommandSubCommands $_)
+                $subCommands = [GitCommand[]](Get-GitCommandSubCommands $_)
                 $aliasTo = [GitAlias[]]($helpMessage | Read-GitCommandAliased $_)
             }
             
@@ -323,7 +448,21 @@ function CompleteGitCommand {
         }
 }
 
+function CompleteGitCommandSubCommand {
+    param($commandName,
+        $parameterName,
+        $wordToComplete,
+        $commandAst,
+        $fakeBoundParameter)
+        
+    Get-GitCommandSubCommandName $fakeBoundParameter.Name "$wordToComplete*" |
+        ForEach-Object {
+            New-CompletionResult $_.SubCommandName "Command: $($_.Name), SubCommand: $($_.SubCommandName)"
+        }
+}
+
 $completionCommands = Get-Command "Get-GitCommand*"
+$subCommandCompletionCommands = Get-Command "Get-GitCommandSubCommand*"
 
 if(Get-Module TabExpansionPlusPlus)
 {
@@ -332,11 +471,22 @@ if(Get-Module TabExpansionPlusPlus)
         -ParameterName Name `
         -Description "Provides command completion for git reflection commands" `
         -ScriptBlock $function:CompleteGitCommand
+        
+    TabExpansionPlusPlus\Register-ArgumentCompleter `
+        -CommandName $subCommandCompletionCommands `
+        -ParameterName SubCommandName `
+        -Description "Provides sub-command completion for git reflection commands" `
+        -ScriptBlock $function:CompleteGitCommandSubCommand
 } else {
     Microsoft.PowerShell.Core\Register-ArgumentCompleter `
         -CommandName $completionCommands `
         -ParameterName Name `
         -ScriptBlock $function:CompleteGitCommand
+        
+    TabExpansionPlusPlus\Register-ArgumentCompleter `
+        -CommandName $subCommandCompletionCommands `
+        -ParameterName SubCommandName `
+        -ScriptBlock $function:CompleteGitCommandSubCommand
 }
 
 Set-Alias gith Get-GitCommandHelpMessage

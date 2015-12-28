@@ -22,9 +22,9 @@ function TransformGitCommand($gitCommand)
         command = $gitCommand.Name
     }
     
-    if($gitCommand.AliasedTo.Count -gt 0)
+    if($gitCommand.AliasedTo)
     {
-        $command_obj | Add-Member -NotePropertyName aliased_to -NotePropertyValue $_.AliasedTo.CommandName
+        $command_obj | Add-Member -NotePropertyName aliased_to -NotePropertyValue $gitCommand.AliasedTo.Name
     }
     else
     {
