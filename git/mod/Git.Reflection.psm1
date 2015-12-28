@@ -1,5 +1,5 @@
 
-$commandCapture = "(?<command>[\w-\.]+)"
+$commandCapture = "(?<command>\w[\w-\.]*)"
 
 $shortParameterCapture = "(?<short>-\w)"
 $longParameterCapture = "(?<long>--[\w-]+)"
@@ -28,8 +28,12 @@ function Read-GitCommandParameter
     }
     
     process {
-        if($_ -match "^    $helpCapture$")
-        {
+        if($_ -match "^    $helpCapture$") {
+            if($lastSeen) {
+                $lastSeen
+                $lastSeen = $null
+            }
+            
             $getDescription = !$Matches["description"]
             
             $lastSeen = New-Object GitCommandParameter -Property @{
@@ -39,31 +43,32 @@ function Read-GitCommandParameter
                 IsArgumentOptional= if($Matches["argument"]) { !!$Matches["optional_arg"] } else { $True }
                 Description = $Matches["description"]
             }
+        } elseif(!$_) {
+            $getDescription = $false
+        } elseif(!($_ -match "^ {26}")) {
+            $getDescription = $false
+        } elseif ($getDescription) {
             
-            if(!$getDescription)
-            {
-                $lastSeen
+            if($lastSeen.Description) {
+                $lastSeen.Description += " $($_.Trim())"
+            } else {
+                $lastSeen.Description = $_.Trim();
             }
-        } 
-        elseif ($getDescription)
-        {
-            $getDescription = $false;
-            
-            $lastSeen.Description = $_.Trim();
-            
-            $lastSeen
-            
-            $lastSeen = $null
         }
     }
     
     end {
-        if($lastSeen)
-        {
+        if($lastSeen) {
             $lastSeen
+            $lastSeen = $null
         }
     }
+}
+
+function Get-GitCommandParameter {
+    Param([string]$Name = "*")
     
+    Get-GitCommandHelpMessage $Name | Read-GitCommandParameter
 }
 
 class GitUsage {
@@ -75,8 +80,10 @@ function Read-GitCommandUsage {
     process {
         if($_ -match $commandUsageCapture)
         {
+            $subCommands = $Matches["sub_commands"].Trim().Split(' ')
+            
             New-Object GitUsage -Property @{
-                CommandName = $Matches["command"]
+                CommandName = $subCommands[0]
                 Usage = $Matches["usage"]
             }
         }
@@ -111,7 +118,7 @@ function Read-GitBisectCommandSubCommands {
                 $readDescription = $false
             }
             
-            $sub_commands = $Matches["sub_commands"].Trim().Split(' -');
+            $sub_commands = $Matches["sub_commands"].Trim().Split(' ');
             
             if($sub_commands.Count -lt 2)
             {
@@ -183,12 +190,6 @@ function Get-GitCommandHelpMessage {
                 $_
             }
         }
-}
-
-function Get-GitCommandParameter {
-    Param([string]$Name = "*")
-    
-    Get-GitCommandHelpMessage $Name | Read-GitCommandParameter
 }
 
 class GitCommand

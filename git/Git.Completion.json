@@ -64,10 +64,6 @@
                                                 {
                                                     "name":  "--ignore-missing",
                                                     "tooltip":  "check if - even missing - files are ignored in dry run"
-                                                },
-                                                {
-                                                    "name":  "--ignore-missing",
-                                                    "tooltip":  "check if - even missing - files are ignored in dry run"
                                                 }
                                             ]
                          },
@@ -309,12 +305,6 @@
                                                     "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
                                                     "argument_type":  "n",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -438,11 +428,6 @@
                                                     "name":  "--directory",
                                                     "tooltip":  "prepend \u003croot\u003e to all filenames",
                                                     "argument_type":  "root"
-                                                },
-                                                {
-                                                    "name":  "--directory",
-                                                    "tooltip":  "prepend \u003croot\u003e to all filenames",
-                                                    "argument_type":  "root"
                                                 }
                                             ]
                          },
@@ -503,11 +488,6 @@
                                                     "name":  "--exec",
                                                     "tooltip":  "path to the remote git-upload-archive command",
                                                     "argument_type":  "command"
-                                                },
-                                                {
-                                                    "name":  "--exec",
-                                                    "tooltip":  "path to the remote git-upload-archive command",
-                                                    "argument_type":  "command"
                                                 }
                                             ]
                          },
@@ -520,10 +500,6 @@
                                                 {
                                                     "name":  "--next-all",
                                                     "tooltip":  "perform \u0027git bisect next\u0027"
-                                                },
-                                                {
-                                                    "name":  "--no-checkout",
-                                                    "tooltip":  "update BISECT_HEAD instead of checking out the current commit"
                                                 },
                                                 {
                                                     "name":  "--no-checkout",
@@ -615,12 +591,6 @@
                                                 {
                                                     "name":  "-L",
                                                     "tooltip":  "\u003cn,m\u003e              Process only line range n,m, counting from 1"
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
@@ -740,12 +710,6 @@
                                                     "tooltip":  "list branches in columns",
                                                     "argument_type":  "style",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--column",
-                                                    "tooltip":  "list branches in columns",
-                                                    "argument_type":  "style",
-                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -802,10 +766,6 @@
                                                 {
                                                     "name":  "--batch-all-objects",
                                                     "tooltip":  "show all objects with --batch or --batch-check"
-                                                },
-                                                {
-                                                    "name":  "--batch-all-objects",
-                                                    "tooltip":  "show all objects with --batch or --batch-check"
                                                 }
                                             ]
                          },
@@ -824,10 +784,6 @@
                                                 {
                                                     "name":  "--stdin",
                                                     "tooltip":  "read file names from stdin"
-                                                },
-                                                {
-                                                    "name":  "-z",
-                                                    "tooltip":  "terminate input and output records by a NUL character"
                                                 },
                                                 {
                                                     "name":  "-z",
@@ -864,25 +820,15 @@
                                                 {
                                                     "name":  "--no-index",
                                                     "tooltip":  "ignore index when checking"
-                                                },
-                                                {
-                                                    "name":  "--no-index",
-                                                    "tooltip":  "ignore index when checking"
                                                 }
                                             ]
                          },
                          {
                              "command":  "check-mailmap",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--stdin",
-                                                    "tooltip":  "also read contacts from stdin"
-                                                },
-                                                {
-                                                    "name":  "--stdin",
-                                                    "tooltip":  "also read contacts from stdin"
-                                                }
-                                            ]
+                             "parameters":  {
+                                                "name":  "--stdin",
+                                                "tooltip":  "also read contacts from stdin"
+                                            }
                          },
                          {
                              "command":  "checkout",
@@ -1013,11 +959,6 @@
                                                     "name":  "--stage",
                                                     "tooltip":  "copy out the files from named stage",
                                                     "argument_type":  "..."
-                                                },
-                                                {
-                                                    "name":  "--stage",
-                                                    "tooltip":  "copy out the files from named stage",
-                                                    "argument_type":  "..."
                                                 }
                                             ]
                          },
@@ -1032,11 +973,6 @@
                                                     "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
                                                     "argument_type":  "n",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose",
-                                                    "alias":  "-v"
                                                 },
                                                 {
                                                     "name":  "--verbose",
@@ -1168,10 +1104,6 @@
                                                 {
                                                     "name":  "-X",
                                                     "tooltip":  "remove only ignored files"
-                                                },
-                                                {
-                                                    "name":  "-X",
-                                                    "tooltip":  "remove only ignored files"
                                                 }
                                             ]
                          },
@@ -1277,11 +1209,6 @@
                                                     "name":  "--config",
                                                     "tooltip":  "\u003ckey=value\u003e",
                                                     "alias":  "-c"
-                                                },
-                                                {
-                                                    "name":  "--config",
-                                                    "tooltip":  "\u003ckey=value\u003e",
-                                                    "alias":  "-c"
                                                 }
                                             ]
                          },
@@ -1317,11 +1244,6 @@
                                                 {
                                                     "name":  "--nl",
                                                     "tooltip":  "Padding space on right border",
-                                                    "argument_type":  "n"
-                                                },
-                                                {
-                                                    "name":  "--padding",
-                                                    "tooltip":  "Padding space between columns",
                                                     "argument_type":  "n"
                                                 },
                                                 {
@@ -1610,10 +1532,6 @@
                                                 {
                                                     "name":  "--includes",
                                                     "tooltip":  "respect include directives on lookup"
-                                                },
-                                                {
-                                                    "name":  "--includes",
-                                                    "tooltip":  "respect include directives on lookup"
                                                 }
                                             ]
                          },
@@ -1624,11 +1542,6 @@
                                                     "name":  "--verbose",
                                                     "tooltip":  "be verbose",
                                                     "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--human-readable",
-                                                    "tooltip":  "print sizes in human readable format",
-                                                    "alias":  "-H"
                                                 },
                                                 {
                                                     "name":  "--human-readable",
@@ -1714,12 +1627,6 @@
                                                     "tooltip":  "append \u003cmark\u003e on dirty working tree (default: \"-dirty\")",
                                                     "argument_type":  "mark",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--dirty",
-                                                    "tooltip":  "append \u003cmark\u003e on dirty working tree (default: \"-dirty\")",
-                                                    "argument_type":  "mark",
-                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -1789,10 +1696,6 @@
                                                     "name":  "--refspec",
                                                     "tooltip":  "Apply refspec to exported refs",
                                                     "argument_type":  "refspec"
-                                                },
-                                                {
-                                                    "name":  "--anonymize",
-                                                    "tooltip":  "anonymize output"
                                                 },
                                                 {
                                                     "name":  "--anonymize",
@@ -1895,11 +1798,6 @@
                                                     "name":  "--refmap",
                                                     "tooltip":  "specify fetch refmap",
                                                     "argument_type":  "refmap"
-                                                },
-                                                {
-                                                    "name":  "--refmap",
-                                                    "tooltip":  "specify fetch refmap",
-                                                    "argument_type":  "refmap"
                                                 }
                                             ]
                          },
@@ -1923,12 +1821,6 @@
                                                     "tooltip":  "use \u003ctext\u003e as start of message",
                                                     "alias":  "-m",
                                                     "argument_type":  "text"
-                                                },
-                                                {
-                                                    "name":  "--file",
-                                                    "tooltip":  "file to read from",
-                                                    "alias":  "-F",
-                                                    "argument_type":  "file"
                                                 },
                                                 {
                                                     "name":  "--file",
@@ -1968,11 +1860,6 @@
                                                     "name":  "--format",
                                                     "tooltip":  "format to use for the output",
                                                     "argument_type":  "format"
-                                                },
-                                                {
-                                                    "name":  "--sort",
-                                                    "tooltip":  "field name to sort on",
-                                                    "argument_type":  "key"
                                                 },
                                                 {
                                                     "name":  "--sort",
@@ -2114,11 +2001,6 @@
                                                     "name":  "--quiet",
                                                     "tooltip":  "don\u0027t print the patch filenames",
                                                     "alias":  "-q"
-                                                },
-                                                {
-                                                    "name":  "--quiet",
-                                                    "tooltip":  "don\u0027t print the patch filenames",
-                                                    "alias":  "-q"
                                                 }
                                             ]
                          },
@@ -2169,10 +2051,6 @@
                                                 {
                                                     "name":  "--lost-found",
                                                     "tooltip":  "write dangling objects in .git/lost-found"
-                                                },
-                                                {
-                                                    "name":  "--progress",
-                                                    "tooltip":  "show progress"
                                                 },
                                                 {
                                                     "name":  "--progress",
@@ -2231,10 +2109,6 @@
                                                 {
                                                     "name":  "--progress",
                                                     "tooltip":  "show progress"
-                                                },
-                                                {
-                                                    "name":  "--progress",
-                                                    "tooltip":  "show progress"
                                                 }
                                             ]
                          },
@@ -2259,10 +2133,6 @@
                                                 {
                                                     "name":  "--auto",
                                                     "tooltip":  "enable auto-gc mode"
-                                                },
-                                                {
-                                                    "name":  "--force",
-                                                    "tooltip":  "force running gc even if there may be another gc running"
                                                 },
                                                 {
                                                     "name":  "--force",
@@ -2443,8 +2313,12 @@
                                                     "tooltip":  "combine patterns specified with -e"
                                                 },
                                                 {
+                                                    "name":  "--or",
+                                                    "tooltip":  ""
+                                                },
+                                                {
                                                     "name":  "--not",
-                                                    "tooltip":  "("
+                                                    "tooltip":  ""
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -2461,10 +2335,6 @@
                                                     "alias":  "-O",
                                                     "argument_type":  "pager",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--ext-grep",
-                                                    "tooltip":  "allow calling of grep(1) (ignored by this build)"
                                                 },
                                                 {
                                                     "name":  "--ext-grep",
@@ -2516,11 +2386,6 @@
                                                     "name":  "--path",
                                                     "tooltip":  "process file as it were from this path",
                                                     "argument_type":  "file"
-                                                },
-                                                {
-                                                    "name":  "--path",
-                                                    "tooltip":  "process file as it were from this path",
-                                                    "argument_type":  "file"
                                                 }
                                             ]
                          },
@@ -2551,11 +2416,6 @@
                                                     "name":  "--info",
                                                     "tooltip":  "show info page",
                                                     "alias":  "-i"
-                                                },
-                                                {
-                                                    "name":  "--info",
-                                                    "tooltip":  "show info page",
-                                                    "alias":  "-i"
                                                 }
                                             ]
                          },
@@ -2580,10 +2440,6 @@
                                                     "name":  "--quiet",
                                                     "tooltip":  "be more quiet",
                                                     "alias":  "-q"
-                                                },
-                                                {
-                                                    "name":  "--curl",
-                                                    "tooltip":  "use libcurl to communicate with the IMAP server"
                                                 },
                                                 {
                                                     "name":  "--curl",
@@ -2697,10 +2553,6 @@
                                                 {
                                                     "name":  "--restart",
                                                     "tooltip":  "restart the web server"
-                                                },
-                                                {
-                                                    "name":  "--restart",
-                                                    "tooltip":  "restart the web server"
                                                 }
                                             ]
                          },
@@ -2710,11 +2562,6 @@
                                                 {
                                                     "name":  "--trim-empty",
                                                     "tooltip":  "trim empty trailers"
-                                                },
-                                                {
-                                                    "name":  "--trailer",
-                                                    "tooltip":  "trailer(s) to add",
-                                                    "argument_type":  "trailer"
                                                 },
                                                 {
                                                     "name":  "--trailer",
@@ -2744,10 +2591,6 @@
                                                     "tooltip":  "decorate options",
                                                     "argument_type":  "...",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -2865,10 +2708,6 @@
                                                 {
                                                     "name":  "--debug",
                                                     "tooltip":  "show debugging data"
-                                                },
-                                                {
-                                                    "name":  "--debug",
-                                                    "tooltip":  "show debugging data"
                                                 }
                                             ]
                          },
@@ -2914,12 +2753,6 @@
                                                 {
                                                     "name":  "--full-tree",
                                                     "tooltip":  "list entire tree; not just current directory (implies --full-name)"
-                                                },
-                                                {
-                                                    "name":  "--abbrev",
-                                                    "tooltip":  "use \u003cn\u003e digits to display SHA-1s",
-                                                    "argument_type":  "n",
-                                                    "argument_optional":  true
                                                 },
                                                 {
                                                     "name":  "--abbrev",
@@ -3030,10 +2863,6 @@
                                                 {
                                                     "name":  "--overwrite-ignore",
                                                     "tooltip":  "update ignored files (default)"
-                                                },
-                                                {
-                                                    "name":  "--overwrite-ignore",
-                                                    "tooltip":  "update ignored files (default)"
                                                 }
                                             ]
                          },
@@ -3056,10 +2885,6 @@
                                                 {
                                                     "name":  "--is-ancestor",
                                                     "tooltip":  "is the first one ancestor of the other?"
-                                                },
-                                                {
-                                                    "name":  "--fork-point",
-                                                    "tooltip":  "find where \u003ccommit\u003e forked from reflog of \u003cref\u003e"
                                                 },
                                                 {
                                                     "name":  "--fork-point",
@@ -3100,11 +2925,6 @@
                                                     "name":  "--quiet",
                                                     "tooltip":  "do not warn about conflicts",
                                                     "alias":  "-q"
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "set labels for file1/orig-file/file2",
-                                                    "argument_type":  "name"
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -3190,10 +3010,6 @@
                                                 {
                                                     "name":  "--debug-unpack",
                                                     "tooltip":  "debug unpack-trees"
-                                                },
-                                                {
-                                                    "name":  "--debug-unpack",
-                                                    "tooltip":  "debug unpack-trees"
                                                 }
                                             ]
                          },
@@ -3223,10 +3039,6 @@
                                                 {
                                                     "name":  "--batch",
                                                     "tooltip":  "allow creation of more than one tree"
-                                                },
-                                                {
-                                                    "name":  "--batch",
-                                                    "tooltip":  "allow creation of more than one tree"
                                                 }
                                             ]
                          },
@@ -3247,10 +3059,6 @@
                                                     "name":  "--force",
                                                     "tooltip":  "force move/rename even if target exists",
                                                     "alias":  "-f"
-                                                },
-                                                {
-                                                    "name":  "-k",
-                                                    "tooltip":  "skip move/rename errors"
                                                 },
                                                 {
                                                     "name":  "-k",
@@ -3289,27 +3097,16 @@
                                                 {
                                                     "name":  "--always",
                                                     "tooltip":  "show abbreviated commit object as fallback"
-                                                },
-                                                {
-                                                    "name":  "--always",
-                                                    "tooltip":  "show abbreviated commit object as fallback"
                                                 }
                                             ]
                          },
                          {
                              "command":  "notes",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--ref",
-                                                    "tooltip":  "use notes from \u003cnotes-ref\u003e",
-                                                    "argument_type":  "notes-ref"
-                                                },
-                                                {
-                                                    "name":  "--ref",
-                                                    "tooltip":  "use notes from \u003cnotes-ref\u003e",
-                                                    "argument_type":  "notes-ref"
-                                                }
-                                            ]
+                             "parameters":  {
+                                                "name":  "--ref",
+                                                "tooltip":  "use notes from \u003cnotes-ref\u003e",
+                                                "argument_type":  "notes-ref"
+                                            }
                          },
                          {
                              "command":  "p4"
@@ -3453,10 +3250,6 @@
                                                 {
                                                     "name":  "--write-bitmap-index",
                                                     "tooltip":  "write a bitmap index together with the pack index"
-                                                },
-                                                {
-                                                    "name":  "--write-bitmap-index",
-                                                    "tooltip":  "write a bitmap index together with the pack index"
                                                 }
                                             ]
                          },
@@ -3469,10 +3262,6 @@
                                                 {
                                                     "name":  "--all",
                                                     "tooltip":  "pack everything"
-                                                },
-                                                {
-                                                    "name":  "--prune",
-                                                    "tooltip":  "prune loose refs (default)"
                                                 },
                                                 {
                                                     "name":  "--prune",
@@ -3514,11 +3303,6 @@
                                                     "name":  "--dry-run",
                                                     "tooltip":  "dry run",
                                                     "alias":  "-n"
-                                                },
-                                                {
-                                                    "name":  "--quiet",
-                                                    "tooltip":  "be quiet",
-                                                    "alias":  "-q"
                                                 },
                                                 {
                                                     "name":  "--quiet",
@@ -3661,11 +3445,6 @@
                                                     "name":  "--refmap",
                                                     "tooltip":  "specify fetch refmap",
                                                     "argument_type":  "refmap"
-                                                },
-                                                {
-                                                    "name":  "--refmap",
-                                                    "tooltip":  "specify fetch refmap",
-                                                    "argument_type":  "refmap"
                                                 }
                                             ]
                          },
@@ -3755,10 +3534,6 @@
                                                 {
                                                     "name":  "--atomic",
                                                     "tooltip":  "request atomic transaction on remote side"
-                                                },
-                                                {
-                                                    "name":  "--atomic",
-                                                    "tooltip":  "request atomic transaction on remote side"
                                                 }
                                             ]
                          },
@@ -3773,11 +3548,6 @@
                                                 {
                                                     "name":  "--author",
                                                     "tooltip":  "author name and email address for patches without any",
-                                                    "argument_type":  "..."
-                                                },
-                                                {
-                                                    "name":  "--patches",
-                                                    "tooltip":  "path to the quilt series and patches",
                                                     "argument_type":  "..."
                                                 },
                                                 {
@@ -3845,10 +3615,6 @@
                                                 {
                                                     "name":  "--no-sparse-checkout",
                                                     "tooltip":  "skip applying sparse checkout filter"
-                                                },
-                                                {
-                                                    "name":  "--debug-unpack",
-                                                    "tooltip":  "debug unpack-trees"
                                                 },
                                                 {
                                                     "name":  "--debug-unpack",
@@ -3998,10 +3764,6 @@
                                                 {
                                                     "name":  "--edit-todo",
                                                     "tooltip":  "edit the todo list during an interactive rebase"
-                                                },
-                                                {
-                                                    "name":  "--edit-todo",
-                                                    "tooltip":  "edit the todo list during an interactive rebase"
                                                 }
                                             ]
                          },
@@ -4016,18 +3778,11 @@
                          },
                          {
                              "command":  "remote",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose; must be placed before a subcommand",
-                                                    "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--verbose",
-                                                    "tooltip":  "be verbose; must be placed before a subcommand",
-                                                    "alias":  "-v"
-                                                }
-                                            ]
+                             "parameters":  {
+                                                "name":  "--verbose",
+                                                "tooltip":  "be verbose; must be placed before a subcommand",
+                                                "alias":  "-v"
+                                            }
                          },
                          {
                              "command":  "remote-ext"
@@ -4117,10 +3872,6 @@
                                                 {
                                                     "name":  "--pack-kept-objects",
                                                     "tooltip":  "repack objects in packs marked with .keep"
-                                                },
-                                                {
-                                                    "name":  "--pack-kept-objects",
-                                                    "tooltip":  "repack objects in packs marked with .keep"
                                                 }
                                             ]
                          },
@@ -4160,39 +3911,22 @@
                                                     "name":  "--format",
                                                     "tooltip":  "use this format",
                                                     "argument_type":  "format"
-                                                },
-                                                {
-                                                    "name":  "--format",
-                                                    "tooltip":  "use this format",
-                                                    "argument_type":  "format"
                                                 }
                                             ]
                          },
                          {
                              "command":  "request-pull",
-                             "parameters":  [
-                                                {
-                                                    "name":  "-p",
-                                                    "tooltip":  "show patch text as well"
-                                                },
-                                                {
-                                                    "name":  "-p",
-                                                    "tooltip":  "show patch text as well"
-                                                }
-                                            ]
+                             "parameters":  {
+                                                "name":  "-p",
+                                                "tooltip":  "show patch text as well"
+                                            }
                          },
                          {
                              "command":  "rerere",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--rerere-autoupdate",
-                                                    "tooltip":  "register clean resolutions in index"
-                                                },
-                                                {
-                                                    "name":  "--rerere-autoupdate",
-                                                    "tooltip":  "register clean resolutions in index"
-                                                }
-                                            ]
+                             "parameters":  {
+                                                "name":  "--rerere-autoupdate",
+                                                "tooltip":  "register clean resolutions in index"
+                                            }
                          },
                          {
                              "command":  "reset",
@@ -4226,11 +3960,6 @@
                                                     "name":  "--patch",
                                                     "tooltip":  "select hunks interactively",
                                                     "alias":  "-p"
-                                                },
-                                                {
-                                                    "name":  "--intent-to-add",
-                                                    "tooltip":  "record only the fact that removed paths will be added later",
-                                                    "alias":  "-N"
                                                 },
                                                 {
                                                     "name":  "--intent-to-add",
@@ -4303,32 +4032,100 @@
                              "command":  "rev-list",
                              "parameters":  [
                                                 {
+                                                    "name":  "--sparse",
+                                                    "tooltip":  ""
+                                                },
+                                                {
                                                     "name":  "--no-merges",
-                                                    "tooltip":  "--min-parents=\u003cn\u003e"
+                                                    "tooltip":  ""
                                                 },
                                                 {
                                                     "name":  "--no-min-parents",
-                                                    "tooltip":  "--max-parents=\u003cn\u003e"
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--no-max-parents",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--remove-empty",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--all",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--branches",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--tags",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--remotes",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--stdin",
+                                                    "tooltip":  ""
                                                 },
                                                 {
                                                     "name":  "--quiet",
-                                                    "tooltip":  "ordering output:"
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--topo-order",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--date-order",
+                                                    "tooltip":  ""
                                                 },
                                                 {
                                                     "name":  "--reverse",
-                                                    "tooltip":  "formatting output:"
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--parents",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--children",
+                                                    "tooltip":  ""
                                                 },
                                                 {
                                                     "name":  "--objects",
                                                     "tooltip":  "| --objects-edge"
                                                 },
                                                 {
+                                                    "name":  "--unpacked",
+                                                    "tooltip":  ""
+                                                },
+                                                {
                                                     "name":  "--header",
                                                     "tooltip":  "| --pretty"
                                                 },
                                                 {
+                                                    "name":  "--abbrev-commit",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--left-right",
+                                                    "tooltip":  ""
+                                                },
+                                                {
                                                     "name":  "--count",
-                                                    "tooltip":  "special purpose:"
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--bisect",
+                                                    "tooltip":  ""
+                                                },
+                                                {
+                                                    "name":  "--bisect-vars",
+                                                    "tooltip":  ""
                                                 },
                                                 {
                                                     "name":  "--bisect-all",
@@ -4364,10 +4161,6 @@
                                                 {
                                                     "name":  "-r",
                                                     "tooltip":  "allow recursive removal"
-                                                },
-                                                {
-                                                    "name":  "--ignore-unmatch",
-                                                    "tooltip":  "exit with a zero status even if nothing matched"
                                                 },
                                                 {
                                                     "name":  "--ignore-unmatch",
@@ -4485,10 +4278,6 @@
                                                 {
                                                     "name":  "--force",
                                                     "tooltip":  "* Send even if safety checks would prevent it."
-                                                },
-                                                {
-                                                    "name":  "--force",
-                                                    "tooltip":  "* Send even if safety checks would prevent it."
                                                 }
                                             ]
                          },
@@ -4561,10 +4350,6 @@
                                                 {
                                                     "name":  "--helper-status",
                                                     "tooltip":  "print status from remote helper"
-                                                },
-                                                {
-                                                    "name":  "--helper-status",
-                                                    "tooltip":  "print status from remote helper"
                                                 }
                                             ]
                          },
@@ -4583,11 +4368,6 @@
                                                     "name":  "--summary",
                                                     "tooltip":  "Suppress commit descriptions, only provides commit count",
                                                     "alias":  "-s"
-                                                },
-                                                {
-                                                    "name":  "--email",
-                                                    "tooltip":  "Show the email address of each author",
-                                                    "alias":  "-e"
                                                 },
                                                 {
                                                     "name":  "--email",
@@ -4617,10 +4397,6 @@
                                                     "tooltip":  "decorate options",
                                                     "argument_type":  "...",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
                                                 },
                                                 {
                                                     "name":  "-L",
@@ -4688,10 +4464,6 @@
                                                 {
                                                     "name":  "--sparse",
                                                     "tooltip":  "show merges reachable from only one tip"
-                                                },
-                                                {
-                                                    "name":  "--date-order",
-                                                    "tooltip":  "topologically sort, maintaining date order where possible"
                                                 },
                                                 {
                                                     "name":  "--date-order",
@@ -4815,10 +4587,6 @@
                                                 {
                                                     "name":  "--ignore-missing",
                                                     "tooltip":  "check if - even missing - files are ignored in dry run"
-                                                },
-                                                {
-                                                    "name":  "--ignore-missing",
-                                                    "tooltip":  "check if - even missing - files are ignored in dry run"
                                                 }
                                             ]
                          },
@@ -4878,12 +4646,6 @@
                                                     "tooltip":  "list untracked files in columns",
                                                     "argument_type":  "style",
                                                     "argument_optional":  true
-                                                },
-                                                {
-                                                    "name":  "--column",
-                                                    "tooltip":  "list untracked files in columns",
-                                                    "argument_type":  "style",
-                                                    "argument_optional":  true
                                                 }
                                             ]
                          },
@@ -4894,11 +4656,6 @@
                                                     "name":  "--strip-comments",
                                                     "tooltip":  "skip and remove all lines starting with comment character",
                                                     "alias":  "-s"
-                                                },
-                                                {
-                                                    "name":  "--comment-lines",
-                                                    "tooltip":  "prepend comment character and blank to each line",
-                                                    "alias":  "-c"
                                                 },
                                                 {
                                                     "name":  "--comment-lines",
@@ -4965,10 +4722,6 @@
                                                 {
                                                     "name":  "--squash",
                                                     "tooltip":  "merge subtree changes as a single commit"
-                                                },
-                                                {
-                                                    "name":  "--squash",
-                                                    "tooltip":  "merge subtree changes as a single commit"
                                                 }
                                             ]
                          },
@@ -4991,11 +4744,6 @@
                                                 {
                                                     "name":  "--short",
                                                     "tooltip":  "shorten ref output"
-                                                },
-                                                {
-                                                    "name":  "-m",
-                                                    "tooltip":  "reason of the update",
-                                                    "argument_type":  "reason"
                                                 },
                                                 {
                                                     "name":  "-m",
@@ -5079,11 +4827,6 @@
                                                     "name":  "--contains",
                                                     "tooltip":  "print only tags that contain the commit",
                                                     "argument_type":  "commit"
-                                                },
-                                                {
-                                                    "name":  "--points-at",
-                                                    "tooltip":  "print only tags of the object",
-                                                    "argument_type":  "object"
                                                 },
                                                 {
                                                     "name":  "--points-at",
@@ -5244,27 +4987,16 @@
                                                 {
                                                     "name":  "--create-reflog",
                                                     "tooltip":  "create a reflog"
-                                                },
-                                                {
-                                                    "name":  "--create-reflog",
-                                                    "tooltip":  "create a reflog"
                                                 }
                                             ]
                          },
                          {
                              "command":  "update-server-info",
-                             "parameters":  [
-                                                {
-                                                    "name":  "--force",
-                                                    "tooltip":  "update the info files from scratch",
-                                                    "alias":  "-f"
-                                                },
-                                                {
-                                                    "name":  "--force",
-                                                    "tooltip":  "update the info files from scratch",
-                                                    "alias":  "-f"
-                                                }
-                                            ]
+                             "parameters":  {
+                                                "name":  "--force",
+                                                "tooltip":  "update the info files from scratch",
+                                                "alias":  "-f"
+                                            }
                          },
                          {
                              "command":  "upload-archive"
@@ -5286,10 +5018,6 @@
                                                 {
                                                     "name":  "--raw",
                                                     "tooltip":  "print raw gpg status output"
-                                                },
-                                                {
-                                                    "name":  "--raw",
-                                                    "tooltip":  "print raw gpg status output"
                                                 }
                                             ]
                          },
@@ -5305,11 +5033,6 @@
                                                     "name":  "--stat-only",
                                                     "tooltip":  "show statistics only",
                                                     "alias":  "-s"
-                                                },
-                                                {
-                                                    "name":  "--stat-only",
-                                                    "tooltip":  "show statistics only",
-                                                    "alias":  "-s"
                                                 }
                                             ]
                          },
@@ -5320,10 +5043,6 @@
                                                     "name":  "--verbose",
                                                     "tooltip":  "print tag contents",
                                                     "alias":  "-v"
-                                                },
-                                                {
-                                                    "name":  "--raw",
-                                                    "tooltip":  "print raw gpg status output"
                                                 },
                                                 {
                                                     "name":  "--raw",
@@ -5359,10 +5078,6 @@
                                                 {
                                                     "name":  "-L",
                                                     "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
-                                                },
-                                                {
-                                                    "name":  "-L",
-                                                    "tooltip":  "\u003cn,m:file\u003e         Process line range n,m in file, counting from 1"
                                                 }
                                             ]
                          },
@@ -5375,10 +5090,6 @@
                                                 {
                                                     "name":  "--missing-ok",
                                                     "tooltip":  "allow missing objects"
-                                                },
-                                                {
-                                                    "name":  "--prefix",
-                                                    "tooltip":  "\u003cprefix\u003e/    write tree object for a subdirectory \u003cprefix\u003e"
                                                 },
                                                 {
                                                     "name":  "--prefix",
