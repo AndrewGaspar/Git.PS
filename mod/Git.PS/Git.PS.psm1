@@ -14,8 +14,15 @@ $longParameterCapture = "(?<long>--[\w-]+)"
 $parameterCapture = "(?:(?:$shortParameterCapture(?:, $longParameterCapture)?)|$longParameterCapture)"
 $argumentCapture = "(?:(?:<(?<argument>[\w-]+)>)|(?<argument>\.\.\.))"
 $optCapture = "(?<optional_arg>\[=$argumentCapture\])"
+$parameterArgumentCapture = "(?:(?<argumennt_capture>(?: $argumentCapture)|$optCapture)?)"
 $description = "(?<description>.*)"
-$helpCapture = "$parameterCapture(?:(?: $argumentCapture)|$optCapture)?(?:\s+$description)?"
+$helpCapture = "$parameterCapture$parameterArgumentCapture(?:\s+$description)?"
+
+$usageParameterCapture = "(?<usage_capture>(?<usage_parameter>$shortParameterCapture|$longParameterCapture)$parameterArgumentCapture)"
+$orUsageParameterCapture = "(?:(?<or_first_parameter>$usageParameterCapture)(?<or_rest_parameter>(?: \| $usageParameterCapture)*))"
+$optionalUsageParameterCapture = "(?<optional_usage_parameter>\[$orUsageParameterCapture\])"
+$subCommandNameCapture = "^($optionalUsageParameterCapture )?$commandCapture"
+$multipleOptionalUsageParameterCapture = "(?:(?<first_optional_parameter>$optionalUsageParameterCapture)(?<rest_optional>(?: $optionalUsageParameterCapture)*))"
 
 $usageCapture = "(?<usage>.*)"
 
@@ -186,7 +193,7 @@ function Read-GitCommandSubCommandName {
     $input | Read-GitCommandUsage |
         ForEach-Object {
             & {
-                if($_.Usage -match "^$commandCapture") {
+                if($_.Usage -match $subCommandNameCapture) {
                     New-Object GitSubCommandName -Property @{
                         Name = $_.Name
                         SubCommandName = $Matches["command"]
@@ -249,7 +256,7 @@ function Read-GitCommandSubCommandUsage {
         $self = $_
         
         $in | ForEach-Object {
-            if($_ -match "git $($self.Name) $($self.SubCommandName)( $usageCapture)?") {
+            if($_ -match "git $($self.Name) ($optionalUsageParameterCapture )?$($self.SubCommandName)( $usageCapture)?") {
                 $obj = New-Object GitSubCommandUsage -Property @{
                     Name = $self.Name
                     SubCommandName = $self.SubCommandName
