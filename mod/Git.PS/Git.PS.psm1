@@ -113,6 +113,7 @@ function Get-GitCommandUsage {
 class GitCommand
 {
     [string]$Name
+    [string]$ParentName
     [GitCommandParameter[]]$Parameters
     [GitUsage[]]$Usage
     [GitCommand[]]$SubCommands
@@ -280,37 +281,35 @@ function Get-GitCommandSubCommandUsage {
         }
 }
 
-function Get-GitCommandSubCommands {
+function Read-GitSubCommand {
     Param([string]$Name="*")
     
-    Get-GitCommandName $Name | 
+    $input | Read-GitCommandSubCommandUsage $Name | 
+        Group-Object -Property SubCommandName |
         ForEach-Object {
-            if($_ -eq "bisect") {
-                Get-GitBisectCommandSubCommands
-            }
-            else
-            {
-                Get-GitCommandUsage $_ | ForEach-Object {
-                    if($_.Usage -match "^$commandCapture") {
-                        $sub_commands = $Matches["sub_command"]
-                        
-                        if($sub_commands.Count -lt 2)
-                        {
-                            continue;
-                        }
-                        
-                        $name = $sub_commands[1]
-                        
-                        New-Object GitCommand -Property @{
-                            Name = $name
-                            Usage = New-Object GitUsage -Property @{
-                                Name = $name
-                                Usage = "$(($sub_commands | Select-Object -Skip 2) -join " ") $($Matches["usage"])"
-                            }
-                        }
+            $group = $_
+            
+            New-Object GitCommand -Property @{
+                Name = $group.Name
+                ParentName = $group.Group[0].Name
+                Usage = [GitUsage[]]($group.Group | ForEach-Object {
+                    New-Object GitUsage -Property @{
+                        Name = $group.Name
+                        Usage = $group.Usage
                     }
-                }
+                })
             }
+        }
+}
+
+function Get-GitSubCommand {
+    Param(
+        [string]$Name="*",
+        [string]$ParentName="*")
+        
+    Get-GitCommandName $ParentName |
+        ForEach-Object {
+            Get-GitCommandHelpMessage $_ | Read-GitSubCommand $Name
         }
 }
 
@@ -416,12 +415,14 @@ function Get-GitCommand
             if(IsCommandNotHelpful $_) {
                 $parameters = @()
                 $usage = @()
+                $subCommands = @()
+                $aliasTo = @()
             } else {
                 $helpMessage = Get-GitCommandHelpMessage $_
                 
                 $parameters = [GitCommandParameter[]]($helpMessage | Read-GitCommandParameter)
                 $usage = [GitUsage[]]($helpMessage | Read-GitCommandUsage)
-                $subCommands = [GitCommand[]](Get-GitCommandSubCommands $_)
+                $subCommands = [GitCommand[]]($helpMessage | Read-GitSubCommand)
                 $aliasTo = [GitAlias[]]($helpMessage | Read-GitCommandAliased $_)
             }
             
@@ -435,7 +436,7 @@ function Get-GitCommand
         }
 }
 
-function NewResult($CompletionText, $ToolTip) {
+function GitCompletion_NewResult($CompletionText, $ToolTip) {
     if(Get-Module TabExpansionPlusPlus)
     {
         New-CompletionResult $CompletionText $ToolTip
@@ -446,7 +447,7 @@ function NewResult($CompletionText, $ToolTip) {
     }
 }
 
-function CompleteGitCommand {
+function GitCompletion_GitCommand {
     param($commandName,
         $parameterName,
         $wordToComplete,
@@ -455,11 +456,11 @@ function CompleteGitCommand {
         
     Get-GitCommandName "$wordToComplete*" |
         ForEach-Object {
-            NewResult $_ "Command: $_"
+            GitCompletion_NewResult $_ "Command: $_"
         }
 }
 
-function CompleteGitCommandSubCommand {
+function GitCompletion_GitCommandSubCommand {
     param($commandName,
         $parameterName,
         $wordToComplete,
@@ -468,12 +469,26 @@ function CompleteGitCommandSubCommand {
         
     Get-GitCommandSubCommandName $fakeBoundParameter.Name "$wordToComplete*" |
         ForEach-Object {
-            NewResult $_.SubCommandName "Command: $($_.Name), SubCommand: $($_.SubCommandName)"
+            GitCompletion_NewResult $_.SubCommandName "Command: $($_.Name), SubCommand: $($_.SubCommandName)"
+        }
+}
+
+function GitCompletion_GitSubCommandName {
+    param($commandName,
+        $parameterName,
+        $wordToComplete,
+        $commandAst,
+        $fakeBoundParameter)
+        
+    Get-GitCommandSubCommandName $fakeBoundParameter.ParentName "$wordToComplete*" |
+        ForEach-Object {
+            GitCompletion_NewResult $_.SubCommandName "Command: $($_.Name), SubCommand: $($_.SubCommandName)"
         }
 }
 
 $completionCommands = Get-Command "Get-GitCommand*"
-$subCommandCompletionCommands = Get-Command "Get-GitCommandSubCommand*"
+$commandSubCommandCompletionCommands = Get-Command "Get-GitCommandSubCommand*"
+$subCommandCompletion = Get-Command "Get-GitSubCommand*"
 
 function RegisterCompleter($CommandName, $ParameterName, $Description, $ScriptBlock) {
     if(Get-Module TabExpansionPlusPlus)
@@ -497,12 +512,24 @@ RegisterCompleter `
     -CommandName $completionCommands `
     -ParameterName Name `
     -Description "Provides command completion for git reflection commands" `
-    -ScriptBlock $function:CompleteGitCommand
+    -ScriptBlock $function:GitCompletion_GitCommand
     
 RegisterCompleter `
-    -CommandName $subCommandCompletionCommands `
+    -CommandName $commandSubCommandCompletionCommands `
     -ParameterName SubCommandName `
     -Description "Provides sub-command completion for git reflection commands" `
-    -ScriptBlock $function:CompleteGitCommandSubCommand
+    -ScriptBlock $function:GitCompletion_GitCommandSubCommand
+    
+RegisterCompleter `
+    -CommandName $subCommandCompletion `
+    -ParameterName ParentName `
+    -Description "Provides command completion for sub-command ParentName parameters" `
+    -ScriptBlock $function:GitCompletion_GitCommand
+    
+RegisterCompleter `
+    -CommandName $subCommandCompletion `
+    -ParameterName Name `
+    -Description "Provides command completion for sub-command Name parameters" `
+    -ScriptBlock $function:GitCompletion_GitSubCommandName
 
 Set-Alias gith Get-GitCommandHelpMessage
