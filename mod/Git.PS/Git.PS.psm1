@@ -435,6 +435,17 @@ function Get-GitCommand
         }
 }
 
+function NewResult($CompletionText, $ToolTip) {
+    if(Get-Module TabExpansionPlusPlus)
+    {
+        New-CompletionResult $CompletionText $ToolTip
+    }
+    else
+    {
+        [System.Management.Automation.CompletionResult]::new($CompletionText, $CompletionText, "ParameterValue", $ToolTip)
+    }
+}
+
 function CompleteGitCommand {
     param($commandName,
         $parameterName,
@@ -444,7 +455,7 @@ function CompleteGitCommand {
         
     Get-GitCommandName "$wordToComplete*" |
         ForEach-Object {
-            New-CompletionResult $_ "Command: $_"
+            NewResult $_ "Command: $_"
         }
 }
 
@@ -457,36 +468,41 @@ function CompleteGitCommandSubCommand {
         
     Get-GitCommandSubCommandName $fakeBoundParameter.Name "$wordToComplete*" |
         ForEach-Object {
-            New-CompletionResult $_.SubCommandName "Command: $($_.Name), SubCommand: $($_.SubCommandName)"
+            NewResult $_.SubCommandName "Command: $($_.Name), SubCommand: $($_.SubCommandName)"
         }
 }
 
 $completionCommands = Get-Command "Get-GitCommand*"
 $subCommandCompletionCommands = Get-Command "Get-GitCommandSubCommand*"
 
-if(Get-Module TabExpansionPlusPlus)
-{
-    TabExpansionPlusPlus\Register-ArgumentCompleter `
-        -CommandName $completionCommands `
-        -ParameterName Name `
-        -Description "Provides command completion for git reflection commands" `
-        -ScriptBlock $function:CompleteGitCommand
-        
-    TabExpansionPlusPlus\Register-ArgumentCompleter `
-        -CommandName $subCommandCompletionCommands `
-        -ParameterName SubCommandName `
-        -Description "Provides sub-command completion for git reflection commands" `
-        -ScriptBlock $function:CompleteGitCommandSubCommand
-} else {
-    Microsoft.PowerShell.Core\Register-ArgumentCompleter `
-        -CommandName $completionCommands `
-        -ParameterName Name `
-        -ScriptBlock $function:CompleteGitCommand
-        
-    TabExpansionPlusPlus\Register-ArgumentCompleter `
-        -CommandName $subCommandCompletionCommands `
-        -ParameterName SubCommandName `
-        -ScriptBlock $function:CompleteGitCommandSubCommand
+function RegisterCompleter($CommandName, $ParameterName, $Description, $ScriptBlock) {
+    if(Get-Module TabExpansionPlusPlus)
+    {
+        TabExpansionPlusPlus\Register-ArgumentCompleter `
+            -CommandName $CommandName `
+            -ParameterName $ParameterName `
+            -Description $Description `
+            -ScriptBlock $ScriptBlock
+    }
+    else
+    {
+        Microsoft.PowerShell.Core\Register-ArgumentCompleter `
+            -CommandName $CommandName `
+            -ParameterName $ParameterName `
+            -ScriptBlock $ScriptBlock
+    }
 }
+
+RegisterCompleter `
+    -CommandName $completionCommands `
+    -ParameterName Name `
+    -Description "Provides command completion for git reflection commands" `
+    -ScriptBlock $function:CompleteGitCommand
+    
+RegisterCompleter `
+    -CommandName $subCommandCompletionCommands `
+    -ParameterName SubCommandName `
+    -Description "Provides sub-command completion for git reflection commands" `
+    -ScriptBlock $function:CompleteGitCommandSubCommand
 
 Set-Alias gith Get-GitCommandHelpMessage
