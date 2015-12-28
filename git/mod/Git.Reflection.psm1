@@ -9,7 +9,9 @@ $optCapture = "(?<optional_arg>\[=$argumentCapture\])"
 $description = "(?<description>.*)"
 $helpCapture = "$parameterCapture(?:(?: $argumentCapture)|$optCapture)?(?:\s+$description)?"
 
-$usageCapture="^(?:(?:usage)|(?:   or)): git(?: |-)$commandCapture (?<usage>.*)$"
+$usageCapture = "(?<git>git)(?<sub_commands>(?:(?: |-)$commandCapture)+)(?: (?<usage>.*))?"
+
+$commandUsageCapture="^(?:(?:usage)|(?:   or)): $usageCapture$"
 
 class GitCommandParameter {
     [string]$ShortParameter
@@ -71,7 +73,7 @@ class GitUsage {
 
 function Read-GitCommandUsage {
     process {
-        if($_ -match $usageCapture)
+        if($_ -match $commandUsageCapture)
         {
             New-Object GitUsage -Property @{
                 CommandName = $Matches["command"]
@@ -87,10 +89,87 @@ function Get-GitCommandUsage {
     Get-GitCommandHelpMessage $Name | Read-GitCommandUsage
 }
 
+class GitSubCommands {
+    [string]$CommandName
+    [string[]]$SubCommands
+    [string]$Usage
+    [string]$Description
+}
+
+function Read-GitBisectCommandSubCommands {
+    begin {
+        $readDescription = $false
+        $lastSubcommand = $null
+    }
+    
+    process {
+        if($_ -match "^$usageCapture$")
+        {
+            if($lastSubcommand) {
+                $lastSubcommand
+                $lastSubcommand = $null
+                $readDescription = $false
+            }
+            
+            $sub_commands = $Matches["sub_commands"].Trim().Split(' -');
+            
+            if($sub_commands.Count -lt 2)
+            {
+                continue;
+            }
+            
+            $lastSubcommand = New-Object GitSubCommands -Property @{
+                CommandName = $sub_commands[0]
+                SubCommands = $sub_commands | Select-Object -Skip 1
+            }
+            
+            $readDescription = $true
+        } elseif ($readDescription)
+        {
+            $lastSubcommand.Description = $_.Trim()
+            $readDescription = $false
+        }
+    }
+    
+    end {
+        if($lastSubcommand) {
+            $lastSubcommand
+            $lastSubcommand = $null
+            $readDescription = $false
+        }
+    }
+}
+
+function Get-GitBisectCommandSubCommands {
+    Get-GitCommandHelpMessage "bisect" | Read-GitBisectCommandSubCommands
+}
+
+function Get-GitCommandSubCommands {
+    Param([string]$Name="*")
+    
+    Get-GitCommandName $Name | 
+        ForEach-Object {
+            if($_ -eq "bisect") {
+                Get-GitBisectCommandSubCommands
+            }
+        }
+}
+
+$nonHelpfulCommands = @("gui*", "citool", "remote-*", "sh-i18n--envsubst", "credential*")
+
+function IsCommandNotHelpful {
+    Param([string]$command)
+    
+    return !!($nonHelpfulCommands | Where-Object { $command -like $_ })
+}
+
 function Get-GitCommandHelpMessage {
     Param([string]$Name = "*")
     
     Get-GitCommandName $Name |
+        Where-Object {
+            !(IsCommandNotHelpful $_)
+        } |
         ForEach-Object {
             git $_ -h 2>&1
         } | 
@@ -117,14 +196,7 @@ class GitCommand
     [string]$Name
     [GitCommandParameter[]]$Parameters
     [GitUsage[]]$Usage
-}
-
-$nonHelpfulCommands = @("gui*", "citool", "remote-*", "sh-i18n--envsubst", "credential*")
-
-function IsCommandNotHelpful {
-    Param([string]$command)
-    
-    return !!($nonHelpfulCommands | Where-Object { $command -like $_ })
+    [GitSubCommands[]]$SubCommands
 }
 
 function Get-GitCommandName
@@ -161,12 +233,14 @@ function Get-GitCommand
                 $helpMessage = Get-GitCommandHelpMessage $_
                 $parameters = [GitCommandParameter[]]($helpMessage | Read-GitCommandParameter)
                 $usage = [GitUsage[]]($helpMessage | Read-GitCommandUsage)
+                $subCommands = [GitSubCommands[]](Get-GitCommandSubCommands $_)
             }
             
             [GitCommand]@{
                 Name = $_
                 Parameters = $parameters
                 Usage = $usage
+                SubCommands = $subCommands
             }
         }
 }
@@ -185,7 +259,7 @@ function CompleteGitCommand {
 }
 
 Register-ArgumentCompleter `
-    -CommandName @("Get-GitCommand", "Get-GitCommandName", "Get-GitCommandParameter", "Get-GitCommandHelpMessage", "Get-GitCommandUsage") `
+    -CommandName @("Get-GitCommand", "Get-GitCommandName", "Get-GitCommandParameter", "Get-GitCommandHelpMessage", "Get-GitCommandUsage", "Get-GitCommandSubCommands") `
     -ParameterName Name `
     -Description "Provides command completion for git reflection commands" `
     -ScriptBlock $function:CompleteGitCommand
