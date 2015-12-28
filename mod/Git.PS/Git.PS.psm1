@@ -302,7 +302,7 @@ function Read-GitSubCommand {
                 Usage = [GitUsage[]]($group.Group | ForEach-Object {
                     New-Object GitUsage -Property @{
                         Name = $group.Name
-                        Usage = $group.Usage
+                        Usage = $_.Usage
                     }
                 })
             }
