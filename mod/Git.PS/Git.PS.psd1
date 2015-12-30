@@ -66,7 +66,7 @@ Description = 'Provides PowerShell level abstractions over git.'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = @("Get-GitCommand*", "Get-GitSubCommand*", "GitCompletion_*")
+FunctionsToExport = @("Get-Git*", "Get-GitCommand*", "Get-GitSubCommand*", "GitCompletion_*")
 
 # Cmdlets to export from this module
 # CmdletsToExport = '*'

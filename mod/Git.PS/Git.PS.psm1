@@ -443,6 +443,32 @@ function Get-GitCommand
         }
 }
 
+function Read-GitUsage {
+    foreach($line in $input)
+    {
+        if($usage -eq "done") {
+            return;
+        } elseif(!$usage) {
+            if(!($line -match "^usage: git (?<rest>.*)$"))
+            {
+                return $null
+            }
+            
+            $usage = $Matches["rest"].Trim()
+        } elseif (!($line.Trim())) {
+            $usage
+            $usage = "done"
+            return;
+        } else {
+            $usage = "$usage $($line.Trim())"
+        }
+    }
+}
+
+function Get-GitUsage {
+    git | Read-GitUsage
+}
+
 function GitCompletion_NewResult($CompletionText, $ToolTip) {
     if(Get-Module TabExpansionPlusPlus)
     {
